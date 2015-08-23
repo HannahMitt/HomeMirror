@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HomeMirror</string>
+
+    <string name="default_mirror_mirror">Mirror, mirror on the wall. Hannah is the prettiest of them all.</string>
+
+    <!-- Owners -->
+    <string name="owners">Hannah and Andy</string>
+
+    <!-- Time module -->
+    <string name="good_morning">Good morning, %s</string>
+    <string name="good_afternoon">Good afternoon, %s</string>
+    <string name="good_evening">Good evening, %s</string>
+    <string name="late">You\'re up late, %s</string>
+    <string name="bedtime">Good evening, %s\n\nIt\'s Hannah\'s bedtime.</string>
+</resources>
