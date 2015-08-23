@@ -22,4 +22,11 @@
         android:gravity="right"
         android:text="@string/default_mirror_mirror" />
 
+    <ImageView
+        android:id="@+id/xkcd_image"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
