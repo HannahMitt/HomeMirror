@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import com.morristaedt.mirror.modules.TimeModule;
 import com.morristaedt.mirror.modules.XKCDModule;
+import com.morristaedt.mirror.modules.YahooFinanceModule;
+import com.morristaedt.mirror.requests.YahooStockResponse;
 import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
 
     private TextView mMainText;
+    private TextView mStockText;
     private ImageView mXKCDImage;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
@@ -26,6 +29,18 @@ public class MirrorActivity extends ActionBarActivity {
             } else {
                 Picasso.with(MirrorActivity.this).load(url).into(mXKCDImage);
                 mXKCDImage.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    private YahooFinanceModule.StockListener mStockListener = new YahooFinanceModule.StockListener() {
+        @Override
+        public void onNewStockPrice(YahooStockResponse.YahooQuoteResponse quoteResponse) {
+            if (quoteResponse == null) {
+                mStockText.setVisibility(View.GONE);
+            } else {
+                mStockText.setVisibility(View.VISIBLE);
+                mStockText.setText("$" + quoteResponse.symbol + " $" + quoteResponse.LastTradePriceOnly);
             }
         }
     };
@@ -45,6 +60,7 @@ public class MirrorActivity extends ActionBarActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mMainText = (TextView) findViewById(R.id.main_text);
+        mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
 
         setViewState();
@@ -59,5 +75,6 @@ public class MirrorActivity extends ActionBarActivity {
     private void setViewState() {
         mMainText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
         XKCDModule.getXKCDForToday(mXKCDListener);
+        YahooFinanceModule.getStockForToday("ETSY", mStockListener);
     }
 }

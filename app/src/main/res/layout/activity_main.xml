@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:text="@string/default_mirror_mirror" />
+        tools:text="Good morning, Andy and Hannah" />
 
     <ImageView
         android:id="@+id/xkcd_image"
@@ -28,5 +28,13 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/stock_text"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        tools:text="$etsy 13.46" />
 
 </LinearLayout>
