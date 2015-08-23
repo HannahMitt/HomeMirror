@@ -6,7 +6,7 @@
         <item name="android:background">@android:color/black</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
@@ -14,5 +14,6 @@
 
     <style name="MirrorText">
         <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">right</item>
     </style>
 </resources>

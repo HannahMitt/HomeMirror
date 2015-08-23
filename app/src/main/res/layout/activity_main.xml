@@ -10,18 +10,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/day_text"
+        style="@style/MirrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Sunday the 22nd" />
+
     <DigitalClock
         style="@style/MirrorText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/weather_summary"
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:gravity="right"
         tools:text="Partly Cloudy" />
 
     <TextView
@@ -29,23 +35,15 @@
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="40dp"
         android:gravity="right"
         tools:text="Good morning, Andy and Hannah" />
-
-    <ImageView
-        android:id="@+id/xkcd_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:visibility="gone" />
 
     <TextView
         android:id="@+id/can_bike"
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="right"
         tools:text="Don't bike today" />
 
@@ -54,8 +52,13 @@
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="right"
         tools:text="$etsy 13.46" />
+
+    <ImageView
+        android:id="@+id/xkcd_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
 </LinearLayout>

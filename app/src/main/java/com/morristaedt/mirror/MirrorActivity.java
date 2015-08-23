@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
 import com.morristaedt.mirror.modules.TimeModule;
 import com.morristaedt.mirror.modules.XKCDModule;
@@ -18,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
 
+    private TextView mDayText;
     private TextView mWeatherSummary;
     private TextView mHelloText;
     private TextView mStockText;
@@ -77,6 +79,7 @@ public class MirrorActivity extends ActionBarActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        mDayText = (TextView) findViewById(R.id.day_text);
         mWeatherSummary = (TextView) findViewById(R.id.weather_summary);
         mHelloText = (TextView) findViewById(R.id.hello_text);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
@@ -93,6 +96,7 @@ public class MirrorActivity extends ActionBarActivity {
     }
 
     private void setViewState() {
+        mDayText.setText(DayModule.getDay());
         mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);

@@ -53,7 +53,7 @@ public class ForecastModule {
             protected void onPostExecute(ForecastResponse forecastResponse) {
                 if (forecastResponse != null) {
                     if (forecastResponse.currently != null) {
-                        listener.onWeatherToday(forecastResponse.currently.summary);
+                        listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + " " + forecastResponse.currently.summary);
                     }
 
                     if (forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
