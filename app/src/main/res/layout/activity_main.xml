@@ -26,12 +26,15 @@
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:includeFontPadding="false"
         android:format12Hour="h:mm"
         android:textSize="90sp" />
 
     <TextView
         android:id="@+id/weather_summary"
         style="@style/MirrorText"
+        android:includeFontPadding="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Partly Cloudy" />

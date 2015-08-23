@@ -11,7 +11,6 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
-
     <style name="MirrorText">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:gravity">right|center_vertical</item>
