@@ -56,6 +56,7 @@
             style="@style/MirrorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableRight="@drawable/bike"
             tools:text="Don't Bike Today" />
 
         <TextView
@@ -70,6 +71,7 @@
             style="@style/MirrorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableRight="@drawable/air_plant"
             android:text="@string/water_plants" />
 
         <TextView
@@ -77,6 +79,7 @@
             style="@style/MirrorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableRight="@drawable/grocery_bag"
             android:text="@string/grocery_list" />
 
         <ImageView
