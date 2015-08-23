@@ -11,7 +11,7 @@
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
+        android:textSize="60sp"
         android:visibility="gone"
         tools:text="Happy Birthday Andy!" />
 
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:format12Hour="h:mm"
-        android:textSize="80sp" />
+        android:textSize="90sp" />
 
     <TextView
         android:id="@+id/weather_summary"
@@ -39,13 +39,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:gravity="right"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/hello_text"
-            style="@style/MirrorText"
+            style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
@@ -53,34 +53,42 @@
 
         <TextView
             android:id="@+id/can_bike"
-            style="@style/MirrorText"
+            style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/bike"
+            android:visibility="gone"
+            tools:visibility="visible"
             tools:text="Don't Bike Today" />
 
         <TextView
-            android:id="@+id/stock_text"
-            style="@style/MirrorText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="$etsy 13.46" />
-
-        <TextView
             android:id="@+id/water_plants"
-            style="@style/MirrorText"
+            style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:drawableRight="@drawable/air_plant"
             android:text="@string/water_plants" />
 
         <TextView
             android:id="@+id/grocery_list"
-            style="@style/MirrorText"
+            style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:drawableRight="@drawable/grocery_bag"
             android:text="@string/grocery_list" />
+
+        <TextView
+            android:id="@+id/stock_text"
+            style="@style/MirrorListText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="$ETSY $13.46" />
 
         <ImageView
             android:id="@+id/xkcd_image"
