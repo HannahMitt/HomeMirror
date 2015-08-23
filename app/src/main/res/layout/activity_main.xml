@@ -4,20 +4,16 @@
     android:layout_height="match_parent"
     android:gravity="right"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/birthday_text"
         style="@style/MirrorText"
-        android:textSize="48sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Happy Birthday Andy!"
-        android:visibility="gone"/>
+        android:textSize="48sp"
+        android:visibility="gone"
+        tools:text="Happy Birthday Andy!" />
 
     <TextView
         android:id="@+id/day_text"
@@ -26,11 +22,12 @@
         android:layout_height="wrap_content"
         tools:text="Sunday the 22nd" />
 
-    <DigitalClock
+    <TextClock
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="60sp" />
+        android:format12Hour="h:mm"
+        android:textSize="80sp" />
 
     <TextView
         android:id="@+id/weather_summary"
@@ -39,39 +36,55 @@
         android:layout_height="wrap_content"
         tools:text="Partly Cloudy" />
 
-    <TextView
-        android:id="@+id/hello_text"
-        style="@style/MirrorText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        tools:text="Good morning, Andy and Hannah" />
+        android:gravity="right"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/water_plants"
-        style="@style/MirrorText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/water_plants" />
+        <TextView
+            android:id="@+id/hello_text"
+            style="@style/MirrorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="Good morning, Andy and Hannah" />
 
-    <TextView
-        android:id="@+id/can_bike"
-        style="@style/MirrorText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Don't Bike Today" />
+        <TextView
+            android:id="@+id/can_bike"
+            style="@style/MirrorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Don't Bike Today" />
 
-    <TextView
-        android:id="@+id/stock_text"
-        style="@style/MirrorText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="$etsy 13.46" />
+        <TextView
+            android:id="@+id/stock_text"
+            style="@style/MirrorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="$etsy 13.46" />
 
-    <ImageView
-        android:id="@+id/xkcd_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/water_plants"
+            style="@style/MirrorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water_plants" />
+
+        <TextView
+            android:id="@+id/grocery_list"
+            style="@style/MirrorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grocery_list" />
+
+        <ImageView
+            android:id="@+id/xkcd_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import com.morristaedt.mirror.R;
 import com.morristaedt.mirror.requests.ForecastRequest;
 import com.morristaedt.mirror.requests.ForecastResponse;
+import com.morristaedt.mirror.utils.WeekUtil;
 
 import java.util.Calendar;
 import java.util.List;
@@ -56,17 +57,12 @@ public class ForecastModule {
                         listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + " " + forecastResponse.currently.summary);
                     }
 
-                    if (isWeekday() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
+                    if (WeekUtil.isWeekday() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
                         listener.onShouldBike(true, shouldBikeToday(forecastResponse.hourly.data));
                     } else {
                         listener.onShouldBike(false, true);
                     }
                 }
-            }
-
-            private boolean isWeekday() {
-                int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-                return dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY;
             }
 
             private boolean shouldBikeToday(List<ForecastResponse.Hour> hours) {

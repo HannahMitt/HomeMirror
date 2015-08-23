@@ -20,6 +20,7 @@
     <!--  Birthday module -->
     <string name="happy_birthday">Happy Birthday, %s!</string>
 
-    <!-- Plants module -->
+    <!-- Chores module -->
     <string name="water_plants">Water Plants Today</string>
+    <string name="grocery_list">Make Grocery List</string>
 </resources>

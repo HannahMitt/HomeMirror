@@ -10,13 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.morristaedt.mirror.modules.BirthdayModule;
+import com.morristaedt.mirror.modules.ChoresModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
-import com.morristaedt.mirror.modules.PlantsModule;
-import com.morristaedt.mirror.modules.TimeModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
 import com.morristaedt.mirror.requests.YahooStockResponse;
+import com.morristaedt.mirror.utils.WeekUtil;
 import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
@@ -25,9 +25,10 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mDayText;
     private TextView mWeatherSummary;
     private TextView mHelloText;
-    private TextView mWaterPlantsText;
-    private TextView mStockText;
     private TextView mBikeTodayText;
+    private TextView mStockText;
+    private View mWaterPlants;
+    private View mGroceryList;
     private ImageView mXKCDImage;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
@@ -89,7 +90,8 @@ public class MirrorActivity extends ActionBarActivity {
         mDayText = (TextView) findViewById(R.id.day_text);
         mWeatherSummary = (TextView) findViewById(R.id.weather_summary);
         mHelloText = (TextView) findViewById(R.id.hello_text);
-        mWaterPlantsText = (TextView) findViewById(R.id.water_plants);
+        mWaterPlants = findViewById(R.id.water_plants);
+        mGroceryList = findViewById(R.id.grocery_list);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
@@ -113,12 +115,18 @@ public class MirrorActivity extends ActionBarActivity {
         }
 
         mDayText.setText(DayModule.getDay());
-        mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
+//        mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources())); // not in current design
 
-        mWaterPlantsText.setVisibility(PlantsModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
+        mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
+        mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
-        YahooFinanceModule.getStockForToday("ETSY", mStockListener);
+
+        if (WeekUtil.isWeekday()) {
+            YahooFinanceModule.getStockForToday("ETSY", mStockListener);
+        } else {
+            mStockText.setVisibility(View.GONE);
+        }
     }
 }
