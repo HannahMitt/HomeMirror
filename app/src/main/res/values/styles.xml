@@ -6,7 +6,7 @@
         <item name="android:background">@android:color/black</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">38sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>

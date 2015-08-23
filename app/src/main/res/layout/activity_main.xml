@@ -30,7 +30,7 @@
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="54sp" />
+        android:textSize="60sp" />
 
     <TextView
         android:id="@+id/weather_summary"
@@ -45,23 +45,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:gravity="right"
         tools:text="Good morning, Andy and Hannah" />
+
+    <TextView
+        android:id="@+id/water_plants"
+        style="@style/MirrorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/water_plants" />
 
     <TextView
         android:id="@+id/can_bike"
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        tools:text="Don't bike today" />
+        tools:text="Don't Bike Today" />
 
     <TextView
         android:id="@+id/stock_text"
         style="@style/MirrorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
         tools:text="$etsy 13.46" />
 
     <ImageView

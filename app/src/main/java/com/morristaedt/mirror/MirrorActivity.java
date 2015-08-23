@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.morristaedt.mirror.modules.BirthdayModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
+import com.morristaedt.mirror.modules.PlantsModule;
 import com.morristaedt.mirror.modules.TimeModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
@@ -24,9 +25,10 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mDayText;
     private TextView mWeatherSummary;
     private TextView mHelloText;
+    private TextView mWaterPlantsText;
     private TextView mStockText;
-    private ImageView mXKCDImage;
     private TextView mBikeTodayText;
+    private ImageView mXKCDImage;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -62,7 +64,8 @@ public class MirrorActivity extends ActionBarActivity {
         }
 
         @Override
-        public void onShouldBike(boolean shouldBike) {
+        public void onShouldBike(boolean showToday, boolean shouldBike) {
+            mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
             mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
         }
     };
@@ -78,6 +81,7 @@ public class MirrorActivity extends ActionBarActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -85,6 +89,7 @@ public class MirrorActivity extends ActionBarActivity {
         mDayText = (TextView) findViewById(R.id.day_text);
         mWeatherSummary = (TextView) findViewById(R.id.weather_summary);
         mHelloText = (TextView) findViewById(R.id.hello_text);
+        mWaterPlantsText = (TextView) findViewById(R.id.water_plants);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
@@ -109,6 +114,9 @@ public class MirrorActivity extends ActionBarActivity {
 
         mDayText.setText(DayModule.getDay());
         mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
+
+        mWaterPlantsText.setVisibility(PlantsModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
+
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
         YahooFinanceModule.getStockForToday("ETSY", mStockListener);

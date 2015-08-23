@@ -14,9 +14,12 @@
     <string name="bedtime">Good evening, %s\n\nIt\'s Hannah\'s bedtime.</string>
 
     <!-- Forecast module -->
-    <string name="bike_today">You can bike today</string>
-    <string name="no_bike_today">Don\'t bike today X</string>
+    <string name="bike_today">Bike Today</string>
+    <string name="no_bike_today">Don\'t Bike Today</string>
 
     <!--  Birthday module -->
     <string name="happy_birthday">Happy Birthday, %s!</string>
+
+    <!-- Plants module -->
+    <string name="water_plants">Water Plants Today</string>
 </resources>
