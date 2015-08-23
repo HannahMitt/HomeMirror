@@ -1,6 +1,8 @@
 package com.morristaedt.mirror;
 
 import android.content.Intent;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -95,6 +97,16 @@ public class MirrorActivity extends ActionBarActivity {
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
+
+        //Negative of XKCD image
+        float[] colorMatrixNegative = {
+                -1.0f, 0, 0, 0, 255, //red
+                0, -1.0f, 0, 0, 255, //green
+                0, 0, -1.0f, 0, 255, //blue
+                0, 0, 0, 1.0f, 0 //alpha
+        };
+        ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
+//        mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
 
         setViewState();
     }
