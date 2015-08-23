@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.morristaedt.mirror.modules.ForecastModule;
 import com.morristaedt.mirror.modules.TimeModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
@@ -17,9 +18,11 @@ import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
 
-    private TextView mMainText;
+    private TextView mWeatherSummary;
+    private TextView mHelloText;
     private TextView mStockText;
     private ImageView mXKCDImage;
+    private TextView mBikeTodayText;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -45,6 +48,21 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
+    private ForecastModule.ForecastListener mForecastListener = new ForecastModule.ForecastListener() {
+        @Override
+        public void onWeatherToday(String weatherToday) {
+            if (!TextUtils.isEmpty(weatherToday)) {
+                mWeatherSummary.setVisibility(View.VISIBLE);
+                mWeatherSummary.setText(weatherToday);
+            }
+        }
+
+        @Override
+        public void onShouldBike(boolean shouldBike) {
+            mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +77,9 @@ public class MirrorActivity extends ActionBarActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        mMainText = (TextView) findViewById(R.id.main_text);
+        mWeatherSummary = (TextView) findViewById(R.id.weather_summary);
+        mHelloText = (TextView) findViewById(R.id.hello_text);
+        mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
 
@@ -73,7 +93,8 @@ public class MirrorActivity extends ActionBarActivity {
     }
 
     private void setViewState() {
-        mMainText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
+        mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
+        ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
         YahooFinanceModule.getStockForToday("ETSY", mStockListener);
     }

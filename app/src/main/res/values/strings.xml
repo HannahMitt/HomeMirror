@@ -12,4 +12,8 @@
     <string name="good_evening">Good evening, %s</string>
     <string name="late">You\'re up late, %s</string>
     <string name="bedtime">Good evening, %s\n\nIt\'s Hannah\'s bedtime.</string>
+
+    <!-- Forecast module -->
+    <string name="bike_today">You can bike today</string>
+    <string name="no_bike_today">Don\'t bike today X</string>
 </resources>

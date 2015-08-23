@@ -29,3 +29,6 @@ proguard/
 #IDE
 .idea/
 *.iml
+
+#Private Keys
+app/src/main/res/values/keys.xml
