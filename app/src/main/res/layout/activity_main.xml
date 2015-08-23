@@ -93,6 +93,7 @@
             style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableRight="@drawable/stock"
             android:visibility="gone"
             tools:text="$ETSY $13.46"
             tools:visibility="visible" />

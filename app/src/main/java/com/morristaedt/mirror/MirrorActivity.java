@@ -23,6 +23,8 @@ import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
 
+    private static final boolean DEMO_MODE = false;
+
     private TextView mBirthdayText;
     private TextView mDayText;
     private TextView mWeatherSummary;
@@ -139,6 +141,15 @@ public class MirrorActivity extends ActionBarActivity {
             YahooFinanceModule.getStockForToday("ETSY", mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
+        }
+    }
+
+    private void showDemoMode() {
+        if (DEMO_MODE) {
+            mBikeTodayText.setVisibility(View.VISIBLE);
+            mStockText.setVisibility(View.VISIBLE);
+            mWaterPlants.setVisibility(View.VISIBLE);
+            mGroceryList.setVisibility(View.VISIBLE);
         }
     }
 }
