@@ -16,4 +16,7 @@
     <!-- Forecast module -->
     <string name="bike_today">You can bike today</string>
     <string name="no_bike_today">Don\'t bike today X</string>
+
+    <!--  Birthday module -->
+    <string name="happy_birthday">Happy Birthday, %s!</string>
 </resources>

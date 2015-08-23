@@ -11,6 +11,15 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/birthday_text"
+        style="@style/MirrorText"
+        android:textSize="48sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Happy Birthday Andy!"
+        android:visibility="gone"/>
+
+    <TextView
         android:id="@+id/day_text"
         style="@style/MirrorText"
         android:layout_width="wrap_content"
@@ -21,7 +30,7 @@
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp" />
+        android:textSize="54sp" />
 
     <TextView
         android:id="@+id/weather_summary"

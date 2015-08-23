@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.morristaedt.mirror.modules.BirthdayModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
 import com.morristaedt.mirror.modules.TimeModule;
@@ -19,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 public class MirrorActivity extends ActionBarActivity {
 
+    private TextView mBirthdayText;
     private TextView mDayText;
     private TextView mWeatherSummary;
     private TextView mHelloText;
@@ -79,6 +81,7 @@ public class MirrorActivity extends ActionBarActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        mBirthdayText = (TextView) findViewById(R.id.birthday_text);
         mDayText = (TextView) findViewById(R.id.day_text);
         mWeatherSummary = (TextView) findViewById(R.id.weather_summary);
         mHelloText = (TextView) findViewById(R.id.hello_text);
@@ -96,6 +99,14 @@ public class MirrorActivity extends ActionBarActivity {
     }
 
     private void setViewState() {
+        String birthday = BirthdayModule.getBirthday();
+        if (TextUtils.isEmpty(birthday)) {
+            mBirthdayText.setVisibility(View.GONE);
+        } else {
+            mBirthdayText.setVisibility(View.VISIBLE);
+            mBirthdayText.setText(getString(R.string.happy_birthday, birthday));
+        }
+
         mDayText.setText(DayModule.getDay());
         mHelloText.setText(TimeModule.getTimeOfDayWelcome(getResources()));
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
