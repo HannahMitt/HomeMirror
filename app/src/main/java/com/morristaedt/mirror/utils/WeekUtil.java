@@ -11,4 +11,9 @@ public class WeekUtil {
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         return dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY;
     }
+
+    public static boolean afterFive(){
+        int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        return hourOfDay >= 17;
+    }
 }

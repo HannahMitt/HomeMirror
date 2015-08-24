@@ -57,7 +57,7 @@ public class ForecastModule {
                         listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + " " + forecastResponse.currently.summary);
                     }
 
-                    if (WeekUtil.isWeekday() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
+                    if (WeekUtil.isWeekday() && !WeekUtil.afterFive() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
                         listener.onShouldBike(true, shouldBikeToday(forecastResponse.hourly.data));
                     } else {
                         listener.onShouldBike(false, true);

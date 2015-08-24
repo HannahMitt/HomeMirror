@@ -137,7 +137,7 @@ public class MirrorActivity extends ActionBarActivity {
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
 
-        if (WeekUtil.isWeekday()) {
+        if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
             YahooFinanceModule.getStockForToday("ETSY", mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);

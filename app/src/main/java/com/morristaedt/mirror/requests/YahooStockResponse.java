@@ -1,5 +1,7 @@
 package com.morristaedt.mirror.requests;
 
+import android.text.TextUtils;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -24,8 +26,12 @@ public class YahooStockResponse {
         public float LastTradePriceOnly;
 
         public BigDecimal getPercentageChange() {
-            BigDecimal decimalPercentage = new BigDecimal(PercentChange.trim().replace("%", "")).divide(BigDecimal.valueOf(100), RoundingMode.CEILING);
-            return decimalPercentage;
+            if (!TextUtils.isEmpty(PercentChange)) {
+                BigDecimal decimalPercentage = new BigDecimal(PercentChange.trim().replace("%", "")).divide(BigDecimal.valueOf(100), RoundingMode.CEILING);
+                return decimalPercentage;
+            } else {
+                return BigDecimal.valueOf(0);
+            }
         }
     }
 
