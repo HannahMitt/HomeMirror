@@ -38,7 +38,7 @@ public class YahooFinanceModule {
                             @Override
                             public Throwable handleError(RetrofitError cause) {
                                 Log.w("mirror", "Yahoo Finance error: " + cause);
-                                return null;
+                                return cause;
                             }
                         })
                         .build();
