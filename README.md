@@ -1,7 +1,7 @@
 # HomeMirror
 Android application powering the mirror in my house
 
-![](https://github.com/HannahMitt/HomeMirror/blob/master/design/IMG_20150825_191621.jpg)
+<img src="https://github.com/HannahMitt/HomeMirror/blob/master/design/IMG_20150825_191621.jpg" width="400"/>
 
 Software
 ====
@@ -14,7 +14,7 @@ Software
 
 APIs provided by Yahoo Finance, Forecast.io, and XKCD
 
-![](https://raw.githubusercontent.com/HannahMitt/HomeMirror/master/design/HomeMirror.png)
+<img src="https://raw.githubusercontent.com/HannahMitt/HomeMirror/master/design/HomeMirror.png" width="400"/>
 
 How to Run
 ----
