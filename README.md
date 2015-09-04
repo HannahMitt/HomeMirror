@@ -31,11 +31,11 @@ Making a Mirror
 We had too many. Sad old devices are ideal.
 I used a [2012 Nexus 7](http://www.amazon.com/gp/offer-listing/B009X3UW2G/ref=olp_tab_refurbished?ie=UTF8&condition=refurbished&qid=1441327955&sr=8-1).
 
-2. Obtain 2-way mirror
+2. Obtain two-way mirror
 ---
 We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment.
 
-I can't vouch for them, but there are also two-way mirror acrylic sheets [on the internet](http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558).
+There are also two-way mirror acrylic sheets [on the internet](http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558), though I can't vouch for them.
 
 Get a mirror at least as large as your Android device.
 
@@ -46,5 +46,26 @@ We eventually discovered [reusuable double-sided adhesive](http://www.amazon.com
 
 We're using it both to mount the mirror to the device, and the device to the wall.
 
+4. Attach black backing
+---
+We used black construction paper. If your device and mirror are awesomely identical in size, you can skip this.
 
+Note: You want to glue it well, so the backing doesn't tear when the adhesive is holding it.
+
+* Cut a piece of black backing the same size as your mirror
+* Decide where you want your device to show through. We did upper right. Leave a border all the way around for adhesive.
+* At that location, carefully cut a hole in the backing the same size as your device
+* CARFULLY glue the backing to the mirror. We used spray adhesive, and practiced how we would pick it up and lay it on the mirror a couple times before going for it. We also wore black surgical gloves.
+
+5. Adhesion
+---
+Fire up the app on the device.
+
+Put the adhesive along the bezel or edges of the device. Line up the mirror and stick it on there.
+
+5. Wall spot
+---
+You probably want a long usb cable. Find a wall spot where you can keep the device plugged in.
+
+Put a bunch of adhesive on the back of the device, and stick it on there.
 
