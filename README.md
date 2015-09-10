@@ -55,7 +55,7 @@ Note: You want to glue it well, so the backing doesn't tear when the adhesive is
 * Cut a piece of black backing the same size as your mirror
 * Decide where you want your device to show through. We did upper right. Leave a border all the way around for adhesive.
 * At that location, carefully cut a hole in the backing the same size as your device
-* CARFULLY glue the backing to the mirror. We used spray adhesive, and practiced how we would pick it up and lay it on the mirror a couple times before going for it. We also wore black surgical gloves.
+* CAREFULLY glue the backing to the mirror. We used spray adhesive, and practiced how we would pick it up and lay it on the mirror a couple times before going for it. We also wore black surgical gloves.
 
 5. Adhesion
 ---
