@@ -69,3 +69,4 @@ You probably want a long usb cable. Find a wall spot where you can keep the devi
 
 Put a bunch of adhesive on the back of the device, and stick it on there.
 
+<img src="https://raw.githubusercontent.com/HannahMitt/HomeMirror/faed8d927b93ec2c38159d8e3968f8133511ee67/design/thumbs_up_mirror.jpg" width="400"/>
