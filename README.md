@@ -65,7 +65,7 @@ Fire up the app on the device.
 
 Put the adhesive along the bezel or edges of the device. Line up the mirror and stick it on there.
 
-5. Wall spot
+6. Wall spot
 ---
 You probably want a long usb cable. Find a wall spot where you can keep the device plugged in.
 
