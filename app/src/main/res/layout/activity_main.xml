@@ -105,7 +105,7 @@
             style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_tag_faces_white_48dp"
+            android:drawableRight="@drawable/smile"
             android:visibility="gone"
             tools:text="Just be happy"
             tools:visibility="visible" />
