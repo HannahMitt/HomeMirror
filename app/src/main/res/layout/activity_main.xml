@@ -89,7 +89,7 @@
             android:drawableRight="@drawable/grocery_bag"
             android:text="@string/grocery_list"
             android:visibility="gone"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/stock_text"
