@@ -23,4 +23,5 @@
     <!-- Chores module -->
     <string name="water_plants">Water Plants Today</string>
     <string name="grocery_list">Make Grocery List</string>
+    <string name="dark_sky_api_key">907c7fe4436c7cbb1a816fc039e9b255</string>
 </resources>
