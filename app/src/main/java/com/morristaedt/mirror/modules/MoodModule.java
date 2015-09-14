@@ -65,9 +65,7 @@ public class MoodModule {
                     final int key = detectedItems.keyAt(0);
                     final Face face = detectedItems.get(key);
                     final float isSmilingProbability = face.getIsSmilingProbability();
-
                     String feedback = getFeedbackForSmileProbability(isSmilingProbability);
-
                     mCallBacks.onShouldGivePositiveAffirmation(feedback);
                 }
             }
@@ -82,8 +80,6 @@ public class MoodModule {
             // isOperational() can be used to check if the required native library is currently
             // available.  The detector will automatically become operational once the library
             // download completes on device.
-            System.out.println("detector isn't operational");
-
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
 
