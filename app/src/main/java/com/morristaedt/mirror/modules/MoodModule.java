@@ -40,6 +40,7 @@ public class MoodModule {
     public void release() {
         if(mCameraSource != null){
             mCameraSource.release();
+            mCameraSource = null;
         }
     }
 
