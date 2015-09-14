@@ -110,7 +110,6 @@
             tools:text="Just be happy"
             tools:visibility="visible" />
 
-
     </LinearLayout>
 
 </LinearLayout>
