@@ -1,6 +1,7 @@
 package com.morristaedt.mirror.modules;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -8,6 +9,7 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
+import com.morristaedt.mirror.R;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -20,7 +22,7 @@ public class MoodModule {
     private MoodListener mCallBacks;
 
     public interface MoodListener{
-        void onShouldGivePositiveAffirmation(Face showAffirmation);
+        void onShouldGivePositiveAffirmation(String affirmation);
     }
 
     public MoodModule(WeakReference<Context> contextWeakReference){
@@ -61,7 +63,12 @@ public class MoodModule {
                 final SparseArray<Face> detectedItems = detections.getDetectedItems();
                 if(detectedItems.size() != 0){
                     final int key = detectedItems.keyAt(0);
-                    mCallBacks.onShouldGivePositiveAffirmation(detectedItems.get(key));
+                    final Face face = detectedItems.get(key);
+                    final float isSmilingProbability = face.getIsSmilingProbability();
+
+                    String feedback = getFeedbackForSmileProbability(isSmilingProbability);
+
+                    mCallBacks.onShouldGivePositiveAffirmation(feedback);
                 }
             }
         });
@@ -90,5 +97,27 @@ public class MoodModule {
         } catch (IOException e) {
             Log.e(TAG, "Something went horribly wrong, with your face.");
         }
+    }
+
+    private String getFeedbackForSmileProbability(float isSmilingProbability) {
+        final boolean isSmiling = isSmilingProbability > 0.5f;
+        final boolean aFaceIsntDetected = isSmilingProbability <= 0;
+
+        String feedback;
+
+        if(isSmiling || aFaceIsntDetected){
+            return null;
+        }
+
+        final Resources resources = mContextWeakReference.get().getResources();
+        if(isSmilingProbability < 0.15){
+            feedback = resources.getString(R.string.it_gets_better);
+        } else if(isSmilingProbability < 0.30){
+            feedback = resources.getString(R.string.looking_good);
+        } else {
+            feedback = resources.getString(R.string.something_special);
+        }
+
+        return feedback;
     }
 }

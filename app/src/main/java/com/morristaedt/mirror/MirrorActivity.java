@@ -85,14 +85,12 @@ public class MirrorActivity extends ActionBarActivity {
 
     private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
         @Override
-        public void onShouldGivePositiveAffirmation(final Face face) {
+        public void onShouldGivePositiveAffirmation(final String affirmation) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    final float isSmilingProbability = face.getIsSmilingProbability();
-                    final boolean isSmiling = isSmilingProbability > 0.5f;
-                    mMoodText.setVisibility(isSmiling ? View.GONE : View.VISIBLE);
-                    mMoodText.setText("Smiling " + NumberFormat.getPercentInstance().format(isSmilingProbability));
+                    mMoodText.setVisibility(affirmation == null ? View.GONE : View.VISIBLE);
+                    mMoodText.setText(affirmation);
                 }
             });
         }

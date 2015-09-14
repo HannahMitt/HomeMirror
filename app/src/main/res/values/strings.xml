@@ -24,4 +24,11 @@
     <string name="water_plants">Water Plants Today</string>
     <string name="grocery_list">Make Grocery List</string>
     <string name="dark_sky_api_key">907c7fe4436c7cbb1a816fc039e9b255</string>
+
+    <!-- Mood module -->
+    <string name="it_gets_better">It gets better!</string>
+    <string name="looking_good">Looking good, keep at it!</string>
+    <string name="something_special">You\'re something special</string>
+
+
 </resources>
