@@ -5,6 +5,7 @@ import android.graphics.ColorFilter;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,7 +22,7 @@ import com.morristaedt.mirror.requests.YahooStockResponse;
 import com.morristaedt.mirror.utils.WeekUtil;
 import com.squareup.picasso.Picasso;
 
-public class MirrorActivity extends ActionBarActivity {
+public class MirrorActivity extends AppCompatActivity {
 
     private static final boolean DEMO_MODE = false;
 
