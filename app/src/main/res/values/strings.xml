@@ -16,6 +16,7 @@
     <!-- Forecast module -->
     <string name="bike_today">Bike Today</string>
     <string name="no_bike_today">Don\'t Bike Today</string>
+    <string name="dark_sky_api_key">7541e176fba94f6f1d562661ab277f1c</string>
 
     <!--  Birthday module -->
     <string name="happy_birthday">Happy Birthday, %s!</string>
