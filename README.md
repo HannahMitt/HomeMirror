@@ -33,7 +33,7 @@ I used a [2012 Nexus 7](http://www.amazon.com/gp/offer-listing/B009X3UW2G/ref=ol
 
 2. Obtain two-way mirror
 ---
-We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment.
+We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment. [List of shops](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-two-way-mirror)
 
 There are also two-way mirror acrylic sheets [on the internet](http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558), though I can't vouch for them.
 
