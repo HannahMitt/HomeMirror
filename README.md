@@ -20,7 +20,7 @@ How to Run
 ----
 1. Clone project
 2. Get a [forecast.io api key](https://developer.forecast.io/)
-3. Add a keys.xml file with \<string name="dark_sky_api_key">your_key\</string>
+3. Add a keys.xml file under res/values with \<string name="dark_sky_api_key">your_key\</string>
 4. Import project to Android Studio and run
 
 Making a Mirror
@@ -33,9 +33,9 @@ I used a [2012 Nexus 7](http://www.amazon.com/gp/offer-listing/B009X3UW2G/ref=ol
 
 2. Obtain two-way mirror
 ---
-We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment. [List of shops](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-two-way-mirror)
+We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment. 
 
-There are also two-way mirror acrylic sheets [on the internet](http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558), though I can't vouch for them.
+[Wiki of places to buy two-way mirrors](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-two-way-mirror)
 
 Get a mirror at least as large as your Android device. My mirror is 6"x12" with 1/8 thickness. 
 
