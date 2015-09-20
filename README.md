@@ -37,7 +37,7 @@ We did this the old-fashioned way, and quested to [Canal Plastic Center](http://
 
 There are also two-way mirror acrylic sheets [on the internet](http://www.tapplastics.com/product/plastics/cut_to_size_plastic/two_way_mirrored_acrylic/558), though I can't vouch for them.
 
-Get a mirror at least as large as your Android device.
+Get a mirror at least as large as your Android device. My mirror is 6"x12" with 1/8 thickness. 
 
 3. Sticky stuff for mounting
 ---
