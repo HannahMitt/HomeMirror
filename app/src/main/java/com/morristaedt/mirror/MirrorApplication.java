@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.SystemClock;
 
 import com.morristaedt.mirror.receiver.AlarmReceiver;
+import com.morristaedt.mirror.settings.ServerService;
 
 /**
  * Created by HannahMitt on 8/22/15.
@@ -15,6 +16,7 @@ import com.morristaedt.mirror.receiver.AlarmReceiver;
 public class MirrorApplication extends Application {
 
     private static final long MINUTES_10 = 10 * 60 * 1000;
+    public static final String SHARED_PREF_NAME = "HomeMirrorPrefs";
 
     @Override
     public void onCreate() {
@@ -25,5 +27,8 @@ public class MirrorApplication extends Application {
         PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + MINUTES_10, MINUTES_10, alarmIntent);
+
+        Intent serverIntent = new Intent(this, ServerService.class);
+        startService(serverIntent);
     }
 }

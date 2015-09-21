@@ -23,6 +23,11 @@
             </intent-filter>
         </activity>
         <receiver android:name=".receiver.AlarmReceiver" />
+
+        <service
+            android:name=".settings.ServerService"
+            android:enabled="true" >
+        </service>
     </application>
 
 </manifest>

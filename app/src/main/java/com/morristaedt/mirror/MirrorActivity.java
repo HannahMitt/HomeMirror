@@ -134,7 +134,7 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
+        ForecastModule.getHourlyForecast(getSharedPreferences(MirrorApplication.SHARED_PREF_NAME, MODE_PRIVATE), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
 
         if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
