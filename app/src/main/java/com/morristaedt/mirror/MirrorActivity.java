@@ -15,6 +15,7 @@ import com.morristaedt.mirror.modules.BirthdayModule;
 import com.morristaedt.mirror.modules.ChoresModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
+import com.morristaedt.mirror.modules.NewsModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
 import com.morristaedt.mirror.requests.YahooStockResponse;
@@ -34,6 +35,7 @@ public class MirrorActivity extends ActionBarActivity {
     private View mWaterPlants;
     private View mGroceryList;
     private ImageView mXKCDImage;
+    private TextView mNewsHeadline;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -75,6 +77,19 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
+    private NewsModule.NewsListener mNewsListener = new NewsModule.NewsListener() {
+        @Override
+        public void onNewNews(String headline) {
+            if (TextUtils.isEmpty(headline)) {
+                mNewsHeadline.setVisibility(View.GONE);
+            } else {
+                mNewsHeadline.setVisibility(View.VISIBLE);
+                mNewsHeadline.setText(headline);
+                mNewsHeadline.setSelected(true);
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +114,7 @@ public class MirrorActivity extends ActionBarActivity {
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
+        mNewsHeadline = (TextView) findViewById(R.id.news_headline);
 
         //Negative of XKCD image
         float[] colorMatrixNegative = {
@@ -136,6 +152,7 @@ public class MirrorActivity extends ActionBarActivity {
 
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
+        NewsModule.getNewsHeadline(this, mNewsListener);
 
         if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
             YahooFinanceModule.getStockForToday("ETSY", mStockListener);

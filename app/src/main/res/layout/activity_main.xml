@@ -92,6 +92,18 @@
             tools:visibility="visible" />
 
         <TextView
+            android:id="@+id/news_headline"
+            style="@style/MirrorListText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="A news headline"
+            tools:visiblity="visible"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"/>
+
+        <TextView
             android:id="@+id/stock_text"
             style="@style/MirrorListText"
             android:layout_width="match_parent"
