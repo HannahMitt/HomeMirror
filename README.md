@@ -35,7 +35,7 @@ I used a [2012 Nexus 7](http://www.amazon.com/gp/offer-listing/B009X3UW2G/ref=ol
 ---
 We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment. 
 
-[Wiki of places to buy two-way mirrors](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-two-way-mirror)
+[Wiki of places to buy two-way mirrors](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-a-two-way-mirror)
 
 Get a mirror at least as large as your Android device. My mirror is 6"x12" with 1/8 thickness. 
 
