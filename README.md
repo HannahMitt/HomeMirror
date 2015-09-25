@@ -23,6 +23,8 @@ How to Run
 3. Add a keys.xml file under res/values with \<string name="dark_sky_api_key">your_key\</string>
 4. Import project to Android Studio and run
 
+When its mirror time, I also recommend turning on the device Developer Option: "Stay Awake - Screen will never sleep while charging"
+
 Making a Mirror
 ====
 
