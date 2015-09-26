@@ -1,5 +1,6 @@
 package com.morristaedt.mirror.modules;
 
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -27,7 +28,7 @@ public class ForecastModule {
         void onShouldBike(boolean showToday, boolean shouldBike);
     }
 
-    public static void getHourlyForecast(final Resources resources, final double lat, final double lon, final ForecastListener listener) {
+    public static void getHourlyForecast(final SharedPreferences sharedPreferences, final double lat, final double lon, final ForecastListener listener) {
         new AsyncTask<Void, Void, ForecastResponse>() {
 
             @Override
@@ -47,7 +48,13 @@ public class ForecastModule {
                 String excludes = "minutely,daily,flags";
                 String units = "si";
                 Log.d("mirror", "backgrounddd");
-                return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);
+                String api_key = sharedPreferences.getString("dark_sky_api_key", "not_a_valid_key");
+                if (!api_key.equals("not_a_valid_key")) {
+                    return service.getHourlyForecast(api_key, lat, lon, excludes, units);
+                } else {
+                    // null is well handled in onPostExecute
+                    return null;
+                }
             }
 
             @Override
