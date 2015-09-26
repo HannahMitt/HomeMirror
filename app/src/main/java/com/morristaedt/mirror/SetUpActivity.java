@@ -1,10 +1,12 @@
 package com.morristaedt.mirror;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -59,6 +61,10 @@ public class SetUpActivity extends Activity {
             @Override
             public void onClick(View v) {
                 saveFields();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mStockTickerSymbol.getWindowToken(), 0);
+
                 Intent intent = new Intent(SetUpActivity.this, MirrorActivity.class);
                 startActivity(intent);
             }

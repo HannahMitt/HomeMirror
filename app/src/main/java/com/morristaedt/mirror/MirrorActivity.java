@@ -262,4 +262,11 @@ public class MirrorActivity extends ActionBarActivity {
             mGroceryList.setVisibility(View.VISIBLE);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, SetUpActivity.class);
+        startActivity(intent);
+    }
 }
