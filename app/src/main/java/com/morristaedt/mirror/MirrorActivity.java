@@ -6,6 +6,7 @@ import android.graphics.ColorFilter;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.modules.BirthdayModule;
 import com.morristaedt.mirror.modules.CalendarModule;
 import com.morristaedt.mirror.modules.ChoresModule;
@@ -32,6 +34,9 @@ import java.lang.ref.WeakReference;
 public class MirrorActivity extends ActionBarActivity {
 
     private static final boolean DEMO_MODE = false;
+
+    @NonNull
+    private ConfigurationSettings mConfigSettings;
 
     private TextView mBirthdayText;
     private TextView mDayText;
@@ -118,6 +123,7 @@ public class MirrorActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mConfigSettings = new ConfigurationSettings(this);
         AlarmReceiver.startMirrorUpdates(this);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
@@ -192,7 +198,7 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
+        ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
         CalendarModule.getCalendarEvents(this, mCalendarListener);
 

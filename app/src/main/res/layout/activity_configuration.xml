@@ -31,7 +31,7 @@
             android:layout_marginRight="@dimen/item_margin"
             android:layout_weight="1"
             android:hint="@string/latitude"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal|numberSigned" />
 
         <EditText
             android:id="@+id/longitude"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/longitude"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal|numberSigned" />
     </LinearLayout>
 
     <Button

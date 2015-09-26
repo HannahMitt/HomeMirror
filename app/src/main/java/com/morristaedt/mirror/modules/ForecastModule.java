@@ -12,7 +12,6 @@ import com.morristaedt.mirror.utils.WeekUtil;
 import java.util.Calendar;
 import java.util.List;
 
-import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 
@@ -27,27 +26,25 @@ public class ForecastModule {
         void onShouldBike(boolean showToday, boolean shouldBike);
     }
 
-    public static void getHourlyForecast(final Resources resources, final double lat, final double lon, final ForecastListener listener) {
+    public static void getHourlyForecast(final Resources resources, final String lat, final String lon, final ForecastListener listener) {
         new AsyncTask<Void, Void, ForecastResponse>() {
 
             @Override
             protected ForecastResponse doInBackground(Void... params) {
                 RestAdapter restAdapter = new RestAdapter.Builder()
                         .setEndpoint("https://api.forecast.io")
-                        .setErrorHandler(new ErrorHandler() {
-                            @Override
-                            public Throwable handleError(RetrofitError cause) {
-                                Log.w("mirror", "Forecast error: " + cause);
-                                return null;
-                            }
-                        })
                         .build();
 
                 ForecastRequest service = restAdapter.create(ForecastRequest.class);
                 String excludes = "minutely,daily,flags";
                 String units = "si";
-                Log.d("mirror", "backgrounddd");
-                return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);
+
+                try {
+                    return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);
+                } catch (RetrofitError error) {
+                    Log.w("mirror", "Forecast error: " + error.getMessage());
+                    return null;
+                }
             }
 
             @Override
