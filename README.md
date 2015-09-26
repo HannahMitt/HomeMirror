@@ -11,6 +11,8 @@ Software
 * Biking weather recommendation
 * Stock price swings
 * Today's new XKCD
+* Next calendar event
+* Face detection with mood detection
 
 APIs provided by Yahoo Finance, Forecast.io, and XKCD
 
