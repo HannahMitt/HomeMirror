@@ -14,6 +14,7 @@ public class ConfigurationSettings {
 
     private static final String USE_MOOD_DETECTION = "mood_detection";
     private static final String SHOW_CALENDAR = "show_calendar";
+    private static final String SHOW_HEADLINE = "show_headline";
     private static final String SHOW_XKCD = "xkcd";
     private static final String INVERT_XKCD = "invert_xkcd";
     private static final String LAT = "lat";
@@ -25,6 +26,7 @@ public class ConfigurationSettings {
 
     private boolean mShowMoodDetection;
     private boolean mShowNextCalendarEvent;
+    private boolean mShowNewsHeadline;
     private boolean mShowXKCD;
     private boolean mInvertXKCD;
 
@@ -41,6 +43,7 @@ public class ConfigurationSettings {
     private void readPrefs() {
         mShowMoodDetection = mSharedPrefs.getBoolean(USE_MOOD_DETECTION, false);
         mShowNextCalendarEvent = mSharedPrefs.getBoolean(SHOW_CALENDAR, false);
+        mShowNewsHeadline = mSharedPrefs.getBoolean(SHOW_HEADLINE, false);
         mShowXKCD = mSharedPrefs.getBoolean(SHOW_XKCD, false);
         mInvertXKCD = mSharedPrefs.getBoolean(INVERT_XKCD, false);
 
@@ -61,6 +64,13 @@ public class ConfigurationSettings {
         mShowNextCalendarEvent = show;
         SharedPreferences.Editor editor = mSharedPrefs.edit();
         editor.putBoolean(SHOW_CALENDAR, show);
+        editor.apply();
+    }
+
+    public void setShowNewsHeadline(boolean show) {
+        mShowNewsHeadline = show;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putBoolean(SHOW_HEADLINE, show);
         editor.apply();
     }
 
@@ -97,6 +107,10 @@ public class ConfigurationSettings {
 
     public boolean showNextCalendarEvent() {
         return mShowNextCalendarEvent;
+    }
+
+    public boolean showNewsHeadline() {
+        return mShowNewsHeadline;
     }
 
     public boolean showXKCD() {

@@ -39,6 +39,7 @@
     <string name="show_calendar_event">Show next calendar event</string>
     <string name="stock">Stock</string>
     <string name="ticker_symbol">Ticker symbol</string>
+    <string name="show_headline">Show BBC headline</string>
 
 
 </resources>

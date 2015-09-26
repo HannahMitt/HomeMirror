@@ -1,11 +1,7 @@
 package com.morristaedt.mirror.modules;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.morristaedt.mirror.MirrorApplication;
 
 import org.mcsoxford.rss.RSSFeed;
 import org.mcsoxford.rss.RSSReader;
@@ -19,7 +15,7 @@ public class NewsModule {
         void onNewNews(String headline);
     }
 
-    public static void getNewsHeadline(final Context context, final NewsListener newsListener) {
+    public static void getNewsHeadline(final NewsListener newsListener) {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected void onPostExecute(String s) {
