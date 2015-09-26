@@ -11,6 +11,8 @@ Software
 * Biking weather recommendation
 * Stock price swings
 * Today's new XKCD
+* Next calendar event
+* Face detection with mood detection
 
 APIs provided by Yahoo Finance, Forecast.io, and XKCD
 
@@ -22,6 +24,8 @@ How to Run
 2. Get a [forecast.io api key](https://developer.forecast.io/)
 3. Add a keys.xml file under res/values with \<string name="dark_sky_api_key">your_key\</string>
 4. Import project to Android Studio and run
+
+When its mirror time, I also recommend turning on the device Developer Option: "Stay Awake - Screen will never sleep while charging"
 
 Making a Mirror
 ====
@@ -35,7 +39,7 @@ I used a [2012 Nexus 7](http://www.amazon.com/gp/offer-listing/B009X3UW2G/ref=ol
 ---
 We did this the old-fashioned way, and quested to [Canal Plastic Center](http://canalplastic.com/). A beautiful and highly recommended establishment. 
 
-[Wiki of places to buy two-way mirrors](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-two-way-mirror)
+[Wiki of places to buy two-way mirrors](https://github.com/HannahMitt/HomeMirror/wiki/Places-to-buy-a-two-way-mirror)
 
 Get a mirror at least as large as your Android device. My mirror is 6"x12" with 1/8 thickness. 
 

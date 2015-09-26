@@ -1,5 +1,6 @@
 package com.morristaedt.mirror;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.ColorFilter;
 import android.graphics.ColorMatrixColorFilter;
@@ -12,14 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.morristaedt.mirror.modules.BirthdayModule;
+import com.morristaedt.mirror.modules.CalendarModule;
 import com.morristaedt.mirror.modules.ChoresModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
+import com.morristaedt.mirror.modules.MoodModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
 import com.morristaedt.mirror.requests.YahooStockResponse;
 import com.morristaedt.mirror.utils.WeekUtil;
 import com.squareup.picasso.Picasso;
+
+import java.lang.ref.WeakReference;
 
 public class MirrorActivity extends ActionBarActivity {
 
@@ -31,9 +36,13 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mHelloText;
     private TextView mBikeTodayText;
     private TextView mStockText;
+    private TextView mMoodText;
     private View mWaterPlants;
     private View mGroceryList;
     private ImageView mXKCDImage;
+    private MoodModule moodModule;
+    private TextView mCalendarTitleText;
+    private TextView mCalendarDetailsText;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -75,6 +84,33 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
+    private MoodModule.MoodListener mMoodListener = new MoodModule.MoodListener() {
+        @Override
+        public void onShouldGivePositiveAffirmation(final String affirmation) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mMoodText.setVisibility(affirmation == null ? View.GONE : View.VISIBLE);
+                    mMoodText.setText(affirmation);
+                }
+            });
+        }
+    };
+
+    private CalendarModule.CalendarListener mCalendarListener = new CalendarModule.CalendarListener() {
+        @Override
+        public void onCalendarUpdate(String title, String details) {
+            mCalendarTitleText.setVisibility(title != null ? View.VISIBLE : View.GONE);
+            mCalendarTitleText.setText(title);
+            mCalendarDetailsText.setVisibility(details != null ? View.VISIBLE : View.GONE);
+            mCalendarDetailsText.setText(details);
+
+            //Make marquee effect work for long text
+            mCalendarTitleText.setSelected(true);
+            mCalendarDetailsText.setSelected(true);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +134,10 @@ public class MirrorActivity extends ActionBarActivity {
         mGroceryList = findViewById(R.id.grocery_list);
         mBikeTodayText = (TextView) findViewById(R.id.can_bike);
         mStockText = (TextView) findViewById(R.id.stock_text);
+        mMoodText = (TextView) findViewById(R.id.mood_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
+        mCalendarTitleText = (TextView) findViewById(R.id.calendar_title);
+        mCalendarDetailsText = (TextView) findViewById(R.id.calendar_details);
 
         //Negative of XKCD image
         float[] colorMatrixNegative = {
@@ -111,6 +150,12 @@ public class MirrorActivity extends ActionBarActivity {
 //        mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
 
         setViewState();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        moodModule.release();
     }
 
     @Override
@@ -136,12 +181,16 @@ public class MirrorActivity extends ActionBarActivity {
 
         ForecastModule.getHourlyForecast(getResources(), 40.681045, -73.9931749, mForecastListener);
         XKCDModule.getXKCDForToday(mXKCDListener);
+        CalendarModule.getCalendarEvents(this, mCalendarListener);
 
         if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
             YahooFinanceModule.getStockForToday("ETSY", mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
         }
+
+        moodModule = new MoodModule(new WeakReference<Context>(this));
+        moodModule.getCurrentMood(mMoodListener);
     }
 
     private void showDemoMode() {
