@@ -28,6 +28,11 @@
     <string name="it_gets_better">It gets better!</string>
     <string name="looking_good">Looking good, keep at it!</string>
     <string name="something_special">You\'re something special</string>
+    <string name="location">Location</string>
+    <string name="set_up">Set Up</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="launch">Launch</string>
 
 
 </resources>

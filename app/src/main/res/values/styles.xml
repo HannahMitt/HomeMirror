@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat">
@@ -8,16 +8,26 @@
         <item name="android:colorBackground">@android:color/black</item>
         <item name="android:textSize">48sp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
     </style>
 
     <style name="MirrorText">
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
         <item name="android:gravity">right|center_vertical</item>
         <item name="android:drawablePadding">8dp</item>
     </style>
 
     <style name="MirrorListText" parent="MirrorText">
-        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingBottom">@dimen/item_margin</item>
+    </style>
+
+    <style name="ConfigurationItemText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
+        <item name="android:textSize">@dimen/configuration_text_size</item>
+        <item name="android:paddingTop">@dimen/item_margin</item>
+    </style>
+
+    <style name="ConfigurationEditText" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/configuration_text_size</item>
     </style>
 </resources>
