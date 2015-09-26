@@ -99,6 +99,15 @@
             android:drawableRight="@drawable/stock"
             android:visibility="gone"
             tools:text="$ETSY $13.46"
+            tools:visibility="gone" />
+        <TextView
+            android:id="@+id/mood_text"
+            style="@style/MirrorListText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/smile"
+            android:visibility="gone"
+            tools:text="Just be happy"
             tools:visibility="visible" />
 
     </LinearLayout>
