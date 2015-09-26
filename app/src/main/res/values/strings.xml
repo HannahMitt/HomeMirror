@@ -33,6 +33,7 @@
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="launch">Launch</string>
+    <string name="mood_detection_option">Show mood detection</string>
 
 
 </resources>

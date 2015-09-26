@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
@@ -14,6 +15,7 @@ public class SetUpActivity extends Activity {
     @NonNull
     private ConfigurationSettings mConfigSettings;
 
+    private CheckBox mMoodDetection;
     private EditText mLatitude;
     private EditText mLongitude;
 
@@ -23,6 +25,9 @@ public class SetUpActivity extends Activity {
         setContentView(R.layout.activity_configuration);
 
         mConfigSettings = new ConfigurationSettings(this);
+
+        mMoodDetection = (CheckBox) findViewById(R.id.mood_detection);
+        mMoodDetection.setChecked(mConfigSettings.showMoodDetection());
 
         mLatitude = (EditText) findViewById(R.id.latitude);
         mLongitude = (EditText) findViewById(R.id.longitude);
@@ -41,6 +46,7 @@ public class SetUpActivity extends Activity {
     }
 
     private void saveFields() {
+        mConfigSettings.setShowMoodDetection(mMoodDetection.isChecked());
         mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());
     }
 }

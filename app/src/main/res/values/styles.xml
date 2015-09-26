@@ -23,7 +23,7 @@
     <style name="ConfigurationItemText">
         <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
         <item name="android:textSize">@dimen/configuration_text_size</item>
-        <item name="android:paddingTop">@dimen/item_margin</item>
+        <item name="android:layout_marginTop">@dimen/item_margin</item>
     </style>
 
     <style name="ConfigurationEditText" parent="Base.Widget.AppCompat.EditText">

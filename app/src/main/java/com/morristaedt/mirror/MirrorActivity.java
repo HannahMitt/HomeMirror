@@ -48,7 +48,7 @@ public class MirrorActivity extends ActionBarActivity {
     private View mWaterPlants;
     private View mGroceryList;
     private ImageView mXKCDImage;
-    private MoodModule moodModule;
+    private MoodModule mMoodModule;
     private TextView mCalendarTitleText;
     private TextView mCalendarDetailsText;
 
@@ -174,7 +174,10 @@ public class MirrorActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        moodModule.release();
+
+        if (mMoodModule != null) {
+            mMoodModule.release();
+        }
     }
 
     @Override
@@ -208,8 +211,12 @@ public class MirrorActivity extends ActionBarActivity {
             mStockText.setVisibility(View.GONE);
         }
 
-        moodModule = new MoodModule(new WeakReference<Context>(this));
-        moodModule.getCurrentMood(mMoodListener);
+        if (mConfigSettings.showMoodDetection()) {
+            mMoodModule = new MoodModule(new WeakReference<Context>(this));
+            mMoodModule.getCurrentMood(mMoodListener);
+        } else {
+            mMoodText.setVisibility(View.GONE);
+        }
     }
 
     private void showDemoMode() {

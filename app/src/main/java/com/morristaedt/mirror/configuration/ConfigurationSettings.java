@@ -11,11 +11,14 @@ public class ConfigurationSettings {
 
     private static final String PREFS_MIRROR = "MirrorPrefs";
 
+    private static final String USE_MOOD_DETECTION = "mood_detection";
     private static final String LAT = "lat";
     private static final String LON = "lon";
 
     @NonNull
     private SharedPreferences mSharedPrefs;
+
+    private boolean mShowMoodDetection;
 
     private String mLatitide;
     private String mLongitude;
@@ -26,8 +29,17 @@ public class ConfigurationSettings {
     }
 
     private void readPrefs() {
+        mShowMoodDetection = mSharedPrefs.getBoolean(USE_MOOD_DETECTION, false);
+
         mLatitide = mSharedPrefs.getString(LAT, "");
         mLongitude = mSharedPrefs.getString(LON, "");
+    }
+
+    public void setShowMoodDetection(boolean show) {
+        mShowMoodDetection = show;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putBoolean(USE_MOOD_DETECTION, show);
+        editor.apply();
     }
 
     public void setLatLon(String latitude, String longitude) {
@@ -38,6 +50,10 @@ public class ConfigurationSettings {
         editor.putString(LAT, mLatitide);
         editor.putString(LON, mLongitude);
         editor.apply();
+    }
+
+    public boolean showMoodDetection() {
+        return mShowMoodDetection;
     }
 
     public String getLatitude() {

@@ -12,6 +12,14 @@
         android:layout_height="wrap_content"
         android:text="@string/set_up" />
 
+    <CheckBox
+        android:id="@+id/mood_detection"
+        style="@style/ConfigurationItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mood_detection_option"
+        android:gravity="center_vertical"/>
+
     <TextView
         style="@style/ConfigurationItemText"
         android:layout_width="wrap_content"
