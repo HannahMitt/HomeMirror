@@ -61,35 +61,42 @@
             android:text="@string/invert_colors" />
     </LinearLayout>
 
-    <TextView
-        style="@style/ConfigurationItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/location" />
-
     <LinearLayout
+        android:id="@+id/location_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/latitude"
-            style="@style/ConfigurationEditText"
-            android:layout_width="0dp"
+        <TextView
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/item_margin"
-            android:layout_weight="1"
-            android:hint="@string/latitude"
-            android:inputType="numberDecimal|numberSigned" />
+            android:text="@string/location" />
 
-        <EditText
-            android:id="@+id/longitude"
-            style="@style/ConfigurationEditText"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/longitude"
-            android:inputType="numberDecimal|numberSigned" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/latitude"
+                style="@style/ConfigurationEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/item_margin"
+                android:layout_weight="1"
+                android:hint="@string/latitude"
+                android:inputType="numberDecimal|numberSigned" />
+
+            <EditText
+                android:id="@+id/longitude"
+                style="@style/ConfigurationEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/longitude"
+                android:inputType="numberDecimal|numberSigned" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView

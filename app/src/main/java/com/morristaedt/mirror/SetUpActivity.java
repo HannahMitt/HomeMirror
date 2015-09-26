@@ -3,25 +3,43 @@ package com.morristaedt.mirror;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
 
 public class SetUpActivity extends Activity {
 
+    private static final long HOUR_MILLIS = 60 * 60 * 1000;
+    private static final int METERS_MIN = 500;
+
     @NonNull
     private ConfigurationSettings mConfigSettings;
+
+    private LocationManager mLocationManager;
+
+    @Nullable
+    private LocationListener mLocationListener;
+
+    @Nullable
+    private Location mLocation;
 
     private CheckBox mMoodDetectionCheckbox;
     private CheckBox mShowNextCaledarEventCheckbox;
     private CheckBox mShowNewsHeadlineCheckbox;
     private CheckBox mXKCDCheckbox;
     private CheckBox mXKCDInvertCheckbox;
+    private View mLocationView;
     private EditText mLatitude;
     private EditText mLongitude;
     private EditText mStockTickerSymbol;
@@ -54,6 +72,9 @@ public class SetUpActivity extends Activity {
         mLatitude.setText(String.valueOf(mConfigSettings.getLatitude()));
         mLongitude.setText(String.valueOf(mConfigSettings.getLongitude()));
 
+        mLocationView = findViewById(R.id.location_view);
+        setUpLocationMonitoring();
+
         mStockTickerSymbol = (EditText) findViewById(R.id.stock_name);
         mStockTickerSymbol.setText(mConfigSettings.getStockTickerSymbol());
 
@@ -71,12 +92,70 @@ public class SetUpActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mLocationManager != null && mLocationListener != null) {
+            mLocationManager.removeUpdates(mLocationListener);
+        }
+    }
+
+    private void setUpLocationMonitoring() {
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+        String provider = mLocationManager.getBestProvider(criteria, true);
+        mLocation = mLocationManager.getLastKnownLocation(provider);
+
+        if (mLocation == null) {
+            mLocationView.setVisibility(View.VISIBLE);
+            mLocationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    if (location != null) {
+                        Toast.makeText(SetUpActivity.this, R.string.found_location, Toast.LENGTH_SHORT).show();
+                        mLocation = location;
+                        mConfigSettings.setLatLon(String.valueOf(mLocation.getLatitude()), String.valueOf(mLocation.getLongitude()));
+                        mLocationManager.removeUpdates(this);
+                        if (mLocationView != null) {
+                            mLocationView.setVisibility(View.GONE);
+                        }
+                    }
+                }
+
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                }
+
+                @Override
+                public void onProviderEnabled(String provider) {
+
+                }
+
+                @Override
+                public void onProviderDisabled(String provider) {
+
+                }
+            };
+            mLocationManager.requestLocationUpdates(provider, HOUR_MILLIS, METERS_MIN, mLocationListener);
+        } else {
+            mLocationView.setVisibility(View.GONE);
+        }
+    }
+
     private void saveFields() {
         mConfigSettings.setShowMoodDetection(mMoodDetectionCheckbox.isChecked());
         mConfigSettings.setShowNextCalendarEvent(mShowNextCaledarEventCheckbox.isChecked());
         mConfigSettings.setShowNewsHeadline(mShowNewsHeadlineCheckbox.isChecked());
         mConfigSettings.setXKCDPreference(mXKCDCheckbox.isChecked(), mXKCDInvertCheckbox.isChecked());
-        mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());
+
+        if (mLocation == null) {
+            mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());
+        } else {
+            mConfigSettings.setLatLon(String.valueOf(mLocation.getLatitude()), String.valueOf(mLocation.getLongitude()));
+        }
+
         mConfigSettings.setStockTickerSymbol(mStockTickerSymbol.getText().toString());
     }
 }
