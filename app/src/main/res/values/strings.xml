@@ -23,4 +23,11 @@
     <!-- Chores module -->
     <string name="water_plants">Water Plants Today</string>
     <string name="grocery_list">Make Grocery List</string>
+
+    <!-- Mood module -->
+    <string name="it_gets_better">It gets better!</string>
+    <string name="looking_good">Looking good, keep at it!</string>
+    <string name="something_special">You\'re something special</string>
+
+
 </resources>
