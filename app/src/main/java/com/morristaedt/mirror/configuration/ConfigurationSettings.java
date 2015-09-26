@@ -3,6 +3,7 @@ package com.morristaedt.mirror.configuration;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 /**
  * Created by HannahMitt on 9/26/15.
@@ -17,6 +18,7 @@ public class ConfigurationSettings {
     private static final String INVERT_XKCD = "invert_xkcd";
     private static final String LAT = "lat";
     private static final String LON = "lon";
+    private static final String STOCK_TICKER = "stock_ticker";
 
     @NonNull
     private SharedPreferences mSharedPrefs;
@@ -28,6 +30,8 @@ public class ConfigurationSettings {
 
     private String mLatitude;
     private String mLongitude;
+
+    private String mStockTickerSymbol;
 
     public ConfigurationSettings(Context context) {
         mSharedPrefs = context.getSharedPreferences(PREFS_MIRROR, Context.MODE_PRIVATE);
@@ -42,6 +46,8 @@ public class ConfigurationSettings {
 
         mLatitude = mSharedPrefs.getString(LAT, "");
         mLongitude = mSharedPrefs.getString(LON, "");
+
+        mStockTickerSymbol = mSharedPrefs.getString(STOCK_TICKER, "");
     }
 
     public void setShowMoodDetection(boolean show) {
@@ -77,6 +83,14 @@ public class ConfigurationSettings {
         editor.apply();
     }
 
+    public void setStockTickerSymbol(String tickerSymbol) {
+        mStockTickerSymbol = tickerSymbol.replace("$", "").trim();
+
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putString(STOCK_TICKER, mStockTickerSymbol);
+        editor.apply();
+    }
+
     public boolean showMoodDetection() {
         return mShowMoodDetection;
     }
@@ -99,5 +113,13 @@ public class ConfigurationSettings {
 
     public String getLongitude() {
         return mLongitude;
+    }
+
+    public boolean showStock() {
+        return !TextUtils.isEmpty(mStockTickerSymbol);
+    }
+
+    public String getStockTickerSymbol() {
+        return mStockTickerSymbol;
     }
 }

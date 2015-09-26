@@ -37,6 +37,8 @@
     <string name="show_xkcd">Show new XKCD</string>
     <string name="invert_colors">Invert comic colors</string>
     <string name="show_calendar_event">Show next calendar event</string>
+    <string name="stock">Stock</string>
+    <string name="ticker_symbol">Ticker symbol</string>
 
 
 </resources>

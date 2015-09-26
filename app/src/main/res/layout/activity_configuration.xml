@@ -84,6 +84,21 @@
             android:inputType="numberDecimal|numberSigned" />
     </LinearLayout>
 
+    <TextView
+        style="@style/ConfigurationItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stock" />
+
+    <EditText
+        android:id="@+id/stock_name"
+        style="@style/ConfigurationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/item_margin"
+        android:hint="@string/ticker_symbol"
+        android:inputType="textCapCharacters" />
+
     <Button
         android:id="@+id/launch_button"
         android:layout_width="wrap_content"

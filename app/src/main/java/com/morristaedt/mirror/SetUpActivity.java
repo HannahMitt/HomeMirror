@@ -21,6 +21,7 @@ public class SetUpActivity extends Activity {
     private CheckBox mXKCDInvertCheckbox;
     private EditText mLatitude;
     private EditText mLongitude;
+    private EditText mStockTickerSymbol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,9 @@ public class SetUpActivity extends Activity {
         mLatitude.setText(String.valueOf(mConfigSettings.getLatitude()));
         mLongitude.setText(String.valueOf(mConfigSettings.getLongitude()));
 
+        mStockTickerSymbol = (EditText) findViewById(R.id.stock_name);
+        mStockTickerSymbol.setText(mConfigSettings.getStockTickerSymbol());
+
         findViewById(R.id.launch_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,5 +66,6 @@ public class SetUpActivity extends Activity {
         mConfigSettings.setShowNextCalendarEvent(mShowNextCaledarEventCheckbox.isChecked());
         mConfigSettings.setXKCDPreference(mXKCDCheckbox.isChecked(), mXKCDInvertCheckbox.isChecked());
         mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());
+        mConfigSettings.setStockTickerSymbol(mStockTickerSymbol.getText().toString());
     }
 }

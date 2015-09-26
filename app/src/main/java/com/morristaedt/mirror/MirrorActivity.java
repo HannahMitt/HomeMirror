@@ -218,8 +218,8 @@ public class MirrorActivity extends ActionBarActivity {
             mCalendarDetailsText.setVisibility(View.GONE);
         }
 
-        if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {
-            YahooFinanceModule.getStockForToday("ETSY", mStockListener);
+        if (mConfigSettings.showStock() && WeekUtil.isWeekday() && WeekUtil.afterFive()) {
+            YahooFinanceModule.getStockForToday(mConfigSettings.getStockTickerSymbol(), mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
         }
