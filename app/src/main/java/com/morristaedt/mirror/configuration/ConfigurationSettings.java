@@ -12,6 +12,8 @@ public class ConfigurationSettings {
     private static final String PREFS_MIRROR = "MirrorPrefs";
 
     private static final String USE_MOOD_DETECTION = "mood_detection";
+    private static final String SHOW_XKCD = "xkcd";
+    private static final String INVERT_XKCD = "invert_xkcd";
     private static final String LAT = "lat";
     private static final String LON = "lon";
 
@@ -19,8 +21,10 @@ public class ConfigurationSettings {
     private SharedPreferences mSharedPrefs;
 
     private boolean mShowMoodDetection;
+    private boolean mShowXKCD;
+    private boolean mInvertXKCD;
 
-    private String mLatitide;
+    private String mLatitude;
     private String mLongitude;
 
     public ConfigurationSettings(Context context) {
@@ -30,8 +34,10 @@ public class ConfigurationSettings {
 
     private void readPrefs() {
         mShowMoodDetection = mSharedPrefs.getBoolean(USE_MOOD_DETECTION, false);
+        mShowXKCD = mSharedPrefs.getBoolean(SHOW_XKCD, false);
+        mInvertXKCD = mSharedPrefs.getBoolean(INVERT_XKCD, false);
 
-        mLatitide = mSharedPrefs.getString(LAT, "");
+        mLatitude = mSharedPrefs.getString(LAT, "");
         mLongitude = mSharedPrefs.getString(LON, "");
     }
 
@@ -42,12 +48,21 @@ public class ConfigurationSettings {
         editor.apply();
     }
 
+    public void setXKCDPreference(boolean showXKCD, boolean invertXKCDColors) {
+        mShowXKCD = showXKCD;
+        mInvertXKCD = invertXKCDColors;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putBoolean(SHOW_XKCD, showXKCD);
+        editor.putBoolean(INVERT_XKCD, invertXKCDColors);
+        editor.apply();
+    }
+
     public void setLatLon(String latitude, String longitude) {
-        mLatitide = latitude.trim();
+        mLatitude = latitude.trim();
         mLongitude = longitude.trim();
 
         SharedPreferences.Editor editor = mSharedPrefs.edit();
-        editor.putString(LAT, mLatitide);
+        editor.putString(LAT, mLatitude);
         editor.putString(LON, mLongitude);
         editor.apply();
     }
@@ -56,8 +71,16 @@ public class ConfigurationSettings {
         return mShowMoodDetection;
     }
 
+    public boolean showXKCD() {
+        return mShowXKCD;
+    }
+
+    public boolean invertXKCD() {
+        return mInvertXKCD;
+    }
+
     public String getLatitude() {
-        return mLatitide;
+        return mLatitude;
     }
 
     public String getLongitude() {

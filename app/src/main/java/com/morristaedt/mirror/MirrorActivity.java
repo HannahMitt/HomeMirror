@@ -158,15 +158,17 @@ public class MirrorActivity extends ActionBarActivity {
         mCalendarTitleText = (TextView) findViewById(R.id.calendar_title);
         mCalendarDetailsText = (TextView) findViewById(R.id.calendar_details);
 
-        //Negative of XKCD image
-        float[] colorMatrixNegative = {
-                -1.0f, 0, 0, 0, 255, //red
-                0, -1.0f, 0, 0, 255, //green
-                0, 0, -1.0f, 0, 255, //blue
-                0, 0, 0, 1.0f, 0 //alpha
-        };
-        ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
-//        mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
+        if (mConfigSettings.invertXKCD()) {
+            //Negative of XKCD image
+            float[] colorMatrixNegative = {
+                    -1.0f, 0, 0, 0, 255, //red
+                    0, -1.0f, 0, 0, 255, //green
+                    0, 0, -1.0f, 0, 255, //blue
+                    0, 0, 0, 1.0f, 0 //alpha
+            };
+            ColorFilter colorFilterNegative = new ColorMatrixColorFilter(colorMatrixNegative);
+            mXKCDImage.setColorFilter(colorFilterNegative); // not inverting for now
+        }
 
         setViewState();
     }
@@ -202,7 +204,13 @@ public class MirrorActivity extends ActionBarActivity {
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
         ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
-        XKCDModule.getXKCDForToday(mXKCDListener);
+
+        if (mConfigSettings.showXKCD()) {
+            XKCDModule.getXKCDForToday(mXKCDListener);
+        } else {
+            mXKCDImage.setVisibility(View.GONE);
+        }
+
         CalendarModule.getCalendarEvents(this, mCalendarListener);
 
         if (WeekUtil.isWeekday() && WeekUtil.afterFive()) {

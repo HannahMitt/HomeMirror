@@ -13,12 +13,37 @@
         android:text="@string/set_up" />
 
     <CheckBox
-        android:id="@+id/mood_detection"
+        android:id="@+id/mood_detection_checkbox"
         style="@style/ConfigurationItemText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mood_detection_option"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical"
+        android:text="@string/mood_detection_option" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/xkcd_checkbox"
+            style="@style/ConfigurationItemText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/item_margin"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/show_xkcd" />
+
+        <CheckBox
+            android:id="@+id/xkcd_invert_checkbox"
+            style="@style/ConfigurationItemText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/invert_colors" />
+    </LinearLayout>
 
     <TextView
         style="@style/ConfigurationItemText"

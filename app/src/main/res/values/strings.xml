@@ -34,6 +34,8 @@
     <string name="longitude">Longitude</string>
     <string name="launch">Launch</string>
     <string name="mood_detection_option">Show mood detection</string>
+    <string name="show_xkcd">Show new XKCD</string>
+    <string name="invert_colors">Invert comic colors</string>
 
 
 </resources>
