@@ -12,9 +12,10 @@ Software
 * Stock price swings
 * Today's new XKCD
 * Next calendar event
+* Top news headline
 * Face detection with mood detection
 
-APIs provided by Yahoo Finance, Forecast.io, and XKCD
+APIs provided by Yahoo Finance, Forecast.io, the BBC, and XKCD
 
 <img src="https://raw.githubusercontent.com/HannahMitt/HomeMirror/master/design/HomeMirror.png" width="400"/>
 
