@@ -22,6 +22,7 @@ import com.morristaedt.mirror.modules.ChoresModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
 import com.morristaedt.mirror.modules.MoodModule;
+import com.morristaedt.mirror.modules.NewsModule;
 import com.morristaedt.mirror.modules.XKCDModule;
 import com.morristaedt.mirror.modules.YahooFinanceModule;
 import com.morristaedt.mirror.receiver.AlarmReceiver;
@@ -49,6 +50,7 @@ public class MirrorActivity extends ActionBarActivity {
     private View mGroceryList;
     private ImageView mXKCDImage;
     private MoodModule mMoodModule;
+    private TextView mNewsHeadline;
     private TextView mCalendarTitleText;
     private TextView mCalendarDetailsText;
 
@@ -89,6 +91,19 @@ public class MirrorActivity extends ActionBarActivity {
         public void onShouldBike(boolean showToday, boolean shouldBike) {
             mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
             mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+        }
+    };
+
+    private NewsModule.NewsListener mNewsListener = new NewsModule.NewsListener() {
+        @Override
+        public void onNewNews(String headline) {
+            if (TextUtils.isEmpty(headline)) {
+                mNewsHeadline.setVisibility(View.GONE);
+            } else {
+                mNewsHeadline.setVisibility(View.VISIBLE);
+                mNewsHeadline.setText(headline);
+                mNewsHeadline.setSelected(true);
+            }
         }
     };
 
@@ -155,6 +170,7 @@ public class MirrorActivity extends ActionBarActivity {
         mStockText = (TextView) findViewById(R.id.stock_text);
         mMoodText = (TextView) findViewById(R.id.mood_text);
         mXKCDImage = (ImageView) findViewById(R.id.xkcd_image);
+        mNewsHeadline = (TextView) findViewById(R.id.news_headline);
         mCalendarTitleText = (TextView) findViewById(R.id.calendar_title);
         mCalendarDetailsText = (TextView) findViewById(R.id.calendar_details);
 
@@ -204,6 +220,7 @@ public class MirrorActivity extends ActionBarActivity {
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
         ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        NewsModule.getNewsHeadline(this, mNewsListener);
 
         if (mConfigSettings.showXKCD()) {
             XKCDModule.getXKCDForToday(mXKCDListener);
