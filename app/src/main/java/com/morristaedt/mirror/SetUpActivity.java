@@ -16,6 +16,7 @@ public class SetUpActivity extends Activity {
     private ConfigurationSettings mConfigSettings;
 
     private CheckBox mMoodDetectionCheckbox;
+    private CheckBox mShowNextCaledarEventCheckbox;
     private CheckBox mXKCDCheckbox;
     private CheckBox mXKCDInvertCheckbox;
     private EditText mLatitude;
@@ -30,6 +31,9 @@ public class SetUpActivity extends Activity {
 
         mMoodDetectionCheckbox = (CheckBox) findViewById(R.id.mood_detection_checkbox);
         mMoodDetectionCheckbox.setChecked(mConfigSettings.showMoodDetection());
+
+        mShowNextCaledarEventCheckbox = (CheckBox) findViewById(R.id.calendar_checkbox);
+        mShowNextCaledarEventCheckbox.setChecked(mConfigSettings.showNextCalendarEvent());
 
         mXKCDCheckbox = (CheckBox) findViewById(R.id.xkcd_checkbox);
         mXKCDCheckbox.setChecked(mConfigSettings.showXKCD());
@@ -55,6 +59,7 @@ public class SetUpActivity extends Activity {
 
     private void saveFields() {
         mConfigSettings.setShowMoodDetection(mMoodDetectionCheckbox.isChecked());
+        mConfigSettings.setShowNextCalendarEvent(mShowNextCaledarEventCheckbox.isChecked());
         mConfigSettings.setXKCDPreference(mXKCDCheckbox.isChecked(), mXKCDInvertCheckbox.isChecked());
         mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());
     }
