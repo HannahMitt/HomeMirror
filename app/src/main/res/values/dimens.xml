@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="item_margin">20dp</dimen>
     <dimen name="configuration_text_size">24sp</dimen>
+    <dimen name="configuration_description_size">18sp</dimen>
 </resources>

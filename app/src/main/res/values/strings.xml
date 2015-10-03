@@ -25,22 +25,25 @@
     <string name="grocery_list">Make Grocery List</string>
 
     <!-- Mood module -->
-    <string name="it_gets_better">It gets better!</string>
-    <string name="looking_good">Looking good, keep at it!</string>
-    <string name="something_special">You\'re something special</string>
+    <string name="it_gets_better">Cheer up, bud</string>
+    <string name="looking_good">Looking flyyy</string>
+    <string name="something_special">Yay! Hi sunshine.</string>
+
+    <!-- Set up -->
     <string name="location">Location</string>
     <string name="set_up">Set Up</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="launch">Launch</string>
     <string name="mood_detection_option">Show mood detection</string>
-    <string name="show_xkcd">Show new XKCD</string>
+    <string name="show_xkcd">Show new xkcd</string>
     <string name="invert_colors">Invert comic colors</string>
     <string name="show_calendar_event">Show next calendar event</string>
     <string name="stock">Stock</string>
     <string name="ticker_symbol">Ticker symbol</string>
     <string name="show_headline">Show BBC headline</string>
     <string name="found_location">Found location</string>
+    <string name="mood_explanation">Uses the front facing camera to read your expression</string>
 
 
 </resources>
