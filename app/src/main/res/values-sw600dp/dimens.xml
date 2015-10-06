@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="item_margin">20dp</dimen>
+    <dimen name="mirror_item_spacing">60dp</dimen>
+
+    <dimen name="mirror_text_size">48sp</dimen>
+    <dimen name="mirror_clock_text_size">90sp</dimen>
+    <dimen name="mirror_birthday_text_size">60sp</dimen>
+    <dimen name="configuration_text_size">24sp</dimen>
+    <dimen name="configuration_description_size">18sp</dimen>
+</resources>

@@ -92,8 +92,9 @@ public class MoodModule {
                     .setRequestedPreviewSize(640, 480)
                     .setFacing(CameraSource.CAMERA_FACING_FRONT)
                     .setRequestedFps(30.0f)
-                    .build()
-            .start();
+                    .build();
+
+            mCameraSource.start();
         } catch (IOException e) {
             Log.e(TAG, "Something went horribly wrong, with your face.");
         }

@@ -137,7 +137,7 @@ public class MirrorActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mirror);
         mConfigSettings = new ConfigurationSettings(this);
         AlarmReceiver.startMirrorUpdates(this);
 

@@ -21,8 +21,8 @@
     <string name="happy_birthday">Happy Birthday, %s!</string>
 
     <!-- Chores module -->
-    <string name="water_plants">Water Plants Today</string>
-    <string name="grocery_list">Make Grocery List</string>
+    <string name="water_plants">Water Plants</string>
+    <string name="grocery_list">Grocery List</string>
 
     <!-- Mood module -->
     <string name="it_gets_better">Cheer up, bud</string>

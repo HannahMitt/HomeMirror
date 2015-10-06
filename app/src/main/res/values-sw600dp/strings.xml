@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Chores module -->
+    <string name="water_plants">Water Plants Today</string>
+    <string name="grocery_list">Make Grocery List</string>
+
+</resources>

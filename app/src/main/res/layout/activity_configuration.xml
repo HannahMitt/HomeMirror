@@ -1,131 +1,136 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin"
-    tools:context=".ConfigurationActivity">
-
-    <TextView
-        style="@style/MirrorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/set_up" />
-
-    <CheckBox
-        android:id="@+id/mood_detection_checkbox"
-        style="@style/ConfigurationItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="@string/mood_detection_option" />
-
-    <TextView
-        style="@style/ConfigurationDescriptionText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mood_explanation" />
-
-    <CheckBox
-        android:id="@+id/calendar_checkbox"
-        style="@style/ConfigurationItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="@string/show_calendar_event" />
-
-    <CheckBox
-        android:id="@+id/headline_checkbox"
-        style="@style/ConfigurationItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="@string/show_headline" />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/xkcd_checkbox"
-            style="@style/ConfigurationItemText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/item_margin"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/show_xkcd" />
-
-        <CheckBox
-            android:id="@+id/xkcd_invert_checkbox"
-            style="@style/ConfigurationItemText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/invert_colors" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/location_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:context=".ConfigurationActivity">
 
         <TextView
+            style="@style/MirrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_up" />
+
+        <CheckBox
+            android:id="@+id/mood_detection_checkbox"
             style="@style/ConfigurationItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/location" />
+            android:gravity="center_vertical"
+            android:text="@string/mood_detection_option" />
+
+        <TextView
+            style="@style/ConfigurationDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mood_explanation" />
+
+        <CheckBox
+            android:id="@+id/calendar_checkbox"
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/show_calendar_event" />
+
+        <CheckBox
+            android:id="@+id/headline_checkbox"
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/show_headline" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/latitude"
-                style="@style/ConfigurationEditText"
+            <CheckBox
+                android:id="@+id/xkcd_checkbox"
+                style="@style/ConfigurationItemText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/item_margin"
                 android:layout_weight="1"
-                android:hint="@string/latitude"
-                android:inputType="numberDecimal|numberSigned" />
+                android:gravity="center_vertical"
+                android:text="@string/show_xkcd" />
 
-            <EditText
-                android:id="@+id/longitude"
-                style="@style/ConfigurationEditText"
+            <CheckBox
+                android:id="@+id/xkcd_invert_checkbox"
+                style="@style/ConfigurationItemText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/longitude"
-                android:inputType="numberDecimal|numberSigned" />
+                android:gravity="center_vertical"
+                android:text="@string/invert_colors" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/location_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ConfigurationItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/latitude"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/item_margin"
+                    android:layout_weight="1"
+                    android:hint="@string/latitude"
+                    android:inputType="numberDecimal|numberSigned" />
+
+                <EditText
+                    android:id="@+id/longitude"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/longitude"
+                    android:inputType="numberDecimal|numberSigned" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stock" />
+
+        <EditText
+            android:id="@+id/stock_name"
+            style="@style/ConfigurationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/item_margin"
+            android:hint="@string/ticker_symbol"
+            android:inputType="textCapCharacters" />
+
+        <Button
+            android:id="@+id/launch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/item_margin"
+            android:text="@string/launch"
+            android:textSize="@dimen/configuration_text_size" />
     </LinearLayout>
-
-    <TextView
-        style="@style/ConfigurationItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stock" />
-
-    <EditText
-        android:id="@+id/stock_name"
-        style="@style/ConfigurationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/item_margin"
-        android:hint="@string/ticker_symbol"
-        android:inputType="textCapCharacters" />
-
-    <Button
-        android:id="@+id/launch_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/item_margin"
-        android:text="@string/launch"
-        android:textSize="@dimen/configuration_text_size" />
-</LinearLayout>
+</ScrollView>

@@ -11,7 +11,7 @@
         style="@style/MirrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="60sp"
+        android:textSize="@dimen/mirror_birthday_text_size"
         android:visibility="gone"
         tools:text="Happy Birthday Andy!" />
 
@@ -22,60 +22,51 @@
         android:layout_height="wrap_content"
         tools:text="Sunday the 22nd" />
 
-    <TextClock
-        style="@style/MirrorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:includeFontPadding="false"
-        android:format12Hour="h:mm"
-        android:textSize="90sp" />
+    <include layout="@layout/clock" />
 
     <TextView
         android:id="@+id/weather_summary"
         style="@style/MirrorText"
-        android:includeFontPadding="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:includeFontPadding="false"
         tools:text="Partly Cloudy" />
 
     <TextView
         android:id="@+id/calendar_title"
         style="@style/MirrorText"
-        android:includeFontPadding="false"
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
+        android:layout_marginTop="@dimen/mirror_item_spacing"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:text="Very important meeting"/>
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        tools:text="Very important meeting" />
 
     <TextView
         android:id="@+id/calendar_details"
         style="@style/MirrorText"
-        android:includeFontPadding="false"
-        android:textSize="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:singleLine="true"
         android:ellipsize="marquee"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        tools:text="11:00-12:00 ~ 10 Downing Street"/>
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        tools:text="11:00-12:00 ~ 10 Downing Street" />
 
     <ImageView
         android:id="@+id/xkcd_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/mirror_item_spacing"
         android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/mirror_item_spacing"
         android:gravity="right"
         android:orientation="vertical">
 
@@ -122,12 +113,12 @@
             style="@style/MirrorListText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:visibility="gone"
             tools:text="A news headline"
-            tools:visiblity="visible"
-            android:singleLine="true"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"/>
+            tools:visiblity="visible" />
 
         <TextView
             android:id="@+id/stock_text"
@@ -138,6 +129,7 @@
             android:visibility="gone"
             tools:text="$ETSY $13.46"
             tools:visibility="gone" />
+
         <TextView
             android:id="@+id/mood_text"
             style="@style/MirrorListText"
