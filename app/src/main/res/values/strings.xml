@@ -40,10 +40,11 @@
     <string name="invert_colors">Invert comic colors</string>
     <string name="show_calendar_event">Show next calendar event</string>
     <string name="stock">Stock</string>
-    <string name="ticker_symbol">Ticker symbol</string>
+    <string name="ticker_symbol">Ticker symbol, i.e. GOOG</string>
     <string name="show_headline">Show BBC headline</string>
     <string name="found_location">Found location</string>
     <string name="mood_explanation">Uses the front facing camera to read your expression</string>
+    <string name="stock_description">Displays on weekdays if the stock swings more than 3%</string>
 
 
 </resources>

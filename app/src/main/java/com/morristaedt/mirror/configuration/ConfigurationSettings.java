@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.morristaedt.mirror.requests.ForecastRequest;
+
 /**
  * Created by HannahMitt on 9/26/15.
  */
@@ -12,6 +14,7 @@ public class ConfigurationSettings {
 
     private static final String PREFS_MIRROR = "MirrorPrefs";
 
+    private static final String FORECAST_UNITS = "forecast_units";
     private static final String USE_MOOD_DETECTION = "mood_detection";
     private static final String SHOW_CALENDAR = "show_calendar";
     private static final String SHOW_HEADLINE = "show_headline";
@@ -23,6 +26,8 @@ public class ConfigurationSettings {
 
     @NonNull
     private SharedPreferences mSharedPrefs;
+
+    private String mForecastUnits;
 
     private boolean mShowMoodDetection;
     private boolean mShowNextCalendarEvent;
@@ -41,6 +46,7 @@ public class ConfigurationSettings {
     }
 
     private void readPrefs() {
+        mForecastUnits = mSharedPrefs.getString(FORECAST_UNITS, ForecastRequest.UNITS_US);
         mShowMoodDetection = mSharedPrefs.getBoolean(USE_MOOD_DETECTION, false);
         mShowNextCalendarEvent = mSharedPrefs.getBoolean(SHOW_CALENDAR, false);
         mShowNewsHeadline = mSharedPrefs.getBoolean(SHOW_HEADLINE, false);
@@ -51,6 +57,12 @@ public class ConfigurationSettings {
         mLongitude = mSharedPrefs.getString(LON, "");
 
         mStockTickerSymbol = mSharedPrefs.getString(STOCK_TICKER, "");
+    }
+
+    public void setIsCelsius(boolean isCelsius) {
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putString(FORECAST_UNITS, isCelsius ? ForecastRequest.UNITS_SI : ForecastRequest.UNITS_US);
+        editor.apply();
     }
 
     public void setShowMoodDetection(boolean show) {
@@ -99,6 +111,14 @@ public class ConfigurationSettings {
         SharedPreferences.Editor editor = mSharedPrefs.edit();
         editor.putString(STOCK_TICKER, mStockTickerSymbol);
         editor.apply();
+    }
+
+    public boolean getIsCelsius() {
+        return ForecastRequest.UNITS_SI.equals(mForecastUnits);
+    }
+
+    public String getForecastUnits() {
+        return mForecastUnits;
     }
 
     public boolean showMoodDetection() {

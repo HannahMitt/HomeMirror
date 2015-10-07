@@ -35,6 +35,7 @@
     <TextView
         android:id="@+id/calendar_title"
         style="@style/MirrorText"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/mirror_item_spacing"
@@ -48,6 +49,7 @@
     <TextView
         android:id="@+id/calendar_details"
         style="@style/MirrorText"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"

@@ -26,7 +26,7 @@ public class ForecastModule {
         void onShouldBike(boolean showToday, boolean shouldBike);
     }
 
-    public static void getHourlyForecast(final Resources resources, final String lat, final String lon, final ForecastListener listener) {
+    public static void getHourlyForecast(final Resources resources, final String units, final String lat, final String lon, final ForecastListener listener) {
         new AsyncTask<Void, Void, ForecastResponse>() {
 
             @Override
@@ -37,7 +37,6 @@ public class ForecastModule {
 
                 ForecastRequest service = restAdapter.create(ForecastRequest.class);
                 String excludes = "minutely,daily,flags";
-                String units = "si";
 
                 try {
                     return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);

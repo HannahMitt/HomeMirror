@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
@@ -34,6 +35,7 @@ public class SetUpActivity extends Activity {
     @Nullable
     private Location mLocation;
 
+    private RadioGroup mTemperatureChoice;
     private CheckBox mMoodDetectionCheckbox;
     private CheckBox mShowNextCaledarEventCheckbox;
     private CheckBox mShowNewsHeadlineCheckbox;
@@ -50,6 +52,9 @@ public class SetUpActivity extends Activity {
         setContentView(R.layout.activity_configuration);
 
         mConfigSettings = new ConfigurationSettings(this);
+
+        mTemperatureChoice = (RadioGroup) findViewById(R.id.temperature_group);
+        mTemperatureChoice.check(mConfigSettings.getIsCelsius() ? R.id.celsius : R.id.farenheit);
 
         mMoodDetectionCheckbox = (CheckBox) findViewById(R.id.mood_detection_checkbox);
         mMoodDetectionCheckbox.setChecked(mConfigSettings.showMoodDetection());
@@ -145,6 +150,7 @@ public class SetUpActivity extends Activity {
     }
 
     private void saveFields() {
+        mConfigSettings.setIsCelsius(mTemperatureChoice.getCheckedRadioButtonId() == R.id.celsius);
         mConfigSettings.setShowMoodDetection(mMoodDetectionCheckbox.isChecked());
         mConfigSettings.setShowNextCalendarEvent(mShowNextCaledarEventCheckbox.isChecked());
         mConfigSettings.setShowNewsHeadline(mShowNewsHeadlineCheckbox.isChecked());

@@ -219,7 +219,7 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
 
         if (mConfigSettings.showNewsHeadline()) {
             NewsModule.getNewsHeadline(mNewsListener);

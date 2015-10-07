@@ -24,21 +24,21 @@ public class MoodModule {
 
     private MoodListener mCallBacks;
 
-    public interface MoodListener{
+    public interface MoodListener {
         void onShouldGivePositiveAffirmation(String affirmation);
     }
 
-    public MoodModule(WeakReference<Context> contextWeakReference){
+    public MoodModule(WeakReference<Context> contextWeakReference) {
         mContextWeakReference = contextWeakReference;
     }
 
-    public void getCurrentMood(MoodListener moodListener){
+    public void getCurrentMood(MoodListener moodListener) {
         createCameraSource();
         mCallBacks = moodListener;
     }
 
     public void release() {
-        if(mCameraSource != null){
+        if (mCameraSource != null) {
             mCameraSource.release();
             mCameraSource = null;
         }
@@ -65,7 +65,7 @@ public class MoodModule {
             @Override
             public void receiveDetections(final Detector.Detections<Face> detections) {
                 final SparseArray<Face> detectedItems = detections.getDetectedItems();
-                if(detectedItems.size() != 0){
+                if (detectedItems.size() != 0) {
                     final int key = detectedItems.keyAt(0);
                     final Face face = detectedItems.get(key);
                     final float isSmilingProbability = face.getIsSmilingProbability();
@@ -95,8 +95,8 @@ public class MoodModule {
                     .build();
 
             mCameraSource.start();
-        } catch (IOException e) {
-            Log.e(TAG, "Something went horribly wrong, with your face.");
+        } catch (IOException | RuntimeException e) {
+            Log.e(TAG, "Something went horribly wrong, with your face.", e);
         }
     }
 
@@ -106,14 +106,14 @@ public class MoodModule {
 
         String feedback;
 
-        if(isSmiling || aFaceIsntDetected){
+        if (isSmiling || aFaceIsntDetected) {
             return null;
         }
 
         final Resources resources = mContextWeakReference.get().getResources();
-        if(isSmilingProbability < 0.15){
+        if (isSmilingProbability < 0.15) {
             feedback = resources.getString(R.string.it_gets_better);
-        } else if(isSmilingProbability < 0.30){
+        } else if (isSmilingProbability < 0.30) {
             feedback = resources.getString(R.string.looking_good);
         } else {
             feedback = resources.getString(R.string.something_special);

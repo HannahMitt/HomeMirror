@@ -16,6 +16,38 @@
             android:layout_height="wrap_content"
             android:text="@string/set_up" />
 
+        <TextView
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature" />
+
+        <RadioGroup
+            android:id="@+id/temperature_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/celsius"
+                style="@style/ConfigurationItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Celsius" />
+
+            <RadioButton
+                android:id="@+id/farenheit"
+                style="@style/ConfigurationItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="@dimen/item_margin"
+                android:text="Farenheit" />
+
+        </RadioGroup>
+
         <CheckBox
             android:id="@+id/mood_detection_checkbox"
             style="@style/ConfigurationItemText"
@@ -49,6 +81,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
             android:orientation="horizontal">
 
             <CheckBox
@@ -77,11 +110,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/ConfigurationItemText"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/location" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/location_title"
+                    style="@style/ConfigurationItemText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location" />
+
+                <TextView
+                    style="@style/ConfigurationDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/location_title"
+                    android:layout_toRightOf="@id/location_title"
+                    android:layout_marginLeft="@dimen/item_margin"
+                    android:text="Couldn't detect a recent location" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,6 +172,12 @@
             android:layout_marginRight="@dimen/item_margin"
             android:hint="@string/ticker_symbol"
             android:inputType="textCapCharacters" />
+
+        <TextView
+            style="@style/ConfigurationDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stock_description" />
 
         <Button
             android:id="@+id/launch_button"
