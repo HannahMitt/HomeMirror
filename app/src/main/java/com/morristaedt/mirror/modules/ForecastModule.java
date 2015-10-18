@@ -50,7 +50,7 @@ public class ForecastModule {
             protected void onPostExecute(ForecastResponse forecastResponse) {
                 if (forecastResponse != null) {
                     if (forecastResponse.currently != null) {
-                        listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + (units=="si"?"C":"F") +" " + forecastResponse.currently.summary);
+                        listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + (units.equals(ForecastRequest.UNITS_SI)?"C":"F") +" " + forecastResponse.currently.summary);
                     }
 
                     if (WeekUtil.isWeekday() && !WeekUtil.afterFive() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
