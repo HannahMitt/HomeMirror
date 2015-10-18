@@ -31,7 +31,8 @@
         <item name="android:textSize">@dimen/configuration_description_size</item>
     </style>
 
-    <style name="ConfigurationEditText" parent="Base.Widget.AppCompat.EditText">
+<!--    <style name="ConfigurationEditText" parent="Base.Widget.AppCompat.EditText">
         <item name="android:textSize">@dimen/configuration_text_size</item>
     </style>
+-->
 </resources>

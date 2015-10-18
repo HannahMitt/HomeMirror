@@ -13,7 +13,7 @@ public class BirthdayModule {
     private static HashMap<String, String> mBirthdayMap;
 
     static {
-        mBirthdayMap = new HashMap<>();
+        mBirthdayMap = new HashMap();
         mBirthdayMap.put("01/17", "Hannah");
         mBirthdayMap.put("05/8", "Andy");
     }
