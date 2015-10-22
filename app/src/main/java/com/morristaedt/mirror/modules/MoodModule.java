@@ -95,7 +95,10 @@ public class MoodModule {
                     .build();
 
             mCameraSource.start();
-        } catch (IOException | RuntimeException e) {
+        } catch (IOException  e) {
+            Log.e(TAG, "Something went horribly wrong, with your face.", e);
+        }
+        catch ( RuntimeException e) {
             Log.e(TAG, "Something went horribly wrong, with your face.", e);
         }
     }

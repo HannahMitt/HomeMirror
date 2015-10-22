@@ -23,10 +23,10 @@ How to Run
 ----
 1. Clone project
 2. Get a [forecast.io api key](https://developer.forecast.io/)
-3. Add a keys.xml file under res/values with \<string name="dark_sky_api_key">your_key\</string>
+3. Add a keys.xml file under res/values with \<resources>\<string name="dark_sky_api_key">your_key\</string>\</resources>
 4. Import project to Android Studio and run
 
-When its mirror time, I also recommend turning on the device Developer Option: "Stay Awake - Screen will never sleep while charging"
+When it is mirror time, I also recommend turning on the device Developer Option: "Stay Awake - Screen will never sleep while charging"
 
 Making a Mirror
 ====
