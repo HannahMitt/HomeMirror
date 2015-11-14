@@ -11,9 +11,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
+    signingConfigs {
+        mirror {
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "23.0.1"
-
     defaultConfig {
         applicationId "com.morristaedt.mirror"
         minSdkVersion 14
@@ -24,10 +27,12 @@ android {
     buildTypes {
         debug {
             ext.enableCrashlytics = false
+            applicationIdSuffix '.debug'
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.mirror
         }
     }
 }
@@ -47,4 +52,14 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
+}
+
+def signingFile = rootProject.file('signing.properties')
+if (signingFile.exists()) {
+    def props = new Properties()
+    props.load(new FileInputStream(signingFile))
+    android.signingConfigs.mirror.storeFile rootProject.file(props.keyStore)
+    android.signingConfigs.mirror.storePassword props.keyStorePassword
+    android.signingConfigs.mirror.keyAlias props.keyAlias
+    android.signingConfigs.mirror.keyPassword props.keyAliasPassword
 }
