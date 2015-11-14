@@ -1,5 +1,7 @@
 package com.morristaedt.mirror.modules;
 
+import com.morristaedt.mirror.configuration.ConfigurationSettings;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +21,11 @@ public class BirthdayModule {
     }
 
     public static String getBirthday() {
+        //TODO configuration
+        if (!ConfigurationSettings.isDebugBuild()) {
+            return "";
+        }
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/d", Locale.US);
         return mBirthdayMap.get(simpleDateFormat.format(new Date()));
     }

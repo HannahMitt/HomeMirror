@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.morristaedt.mirror.BuildConfig;
 import com.morristaedt.mirror.requests.ForecastRequest;
 
 /**
@@ -155,5 +156,9 @@ public class ConfigurationSettings {
 
     public String getStockTickerSymbol() {
         return mStockTickerSymbol;
+    }
+
+    public static boolean isDebugBuild() {
+        return BuildConfig.DEBUG;
     }
 }

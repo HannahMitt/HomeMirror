@@ -46,5 +46,4 @@
     <string name="mood_explanation">Uses the front facing camera to read your expression</string>
     <string name="stock_description">Displays on weekdays if the stock swings more than 3%</string>
 
-
 </resources>
