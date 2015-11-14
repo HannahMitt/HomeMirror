@@ -33,3 +33,4 @@ proguard/
 
 #Private Keys
 app/src/main/res/values/keys.xml
+app/fabric.properties

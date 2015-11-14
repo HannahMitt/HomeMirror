@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class SetUpActivity extends Activity {
 
@@ -49,6 +51,7 @@ public class SetUpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_configuration);
 
         mConfigSettings = new ConfigurationSettings(this);
