@@ -15,6 +15,8 @@ import com.morristaedt.mirror.MirrorActivity;
  */
 public class AlarmReceiver extends BroadcastReceiver {
 
+    private static final int REQUEST_CODE = 1001;
+
     private static final String WAKE_LOCK = "HomeMirrorWakeLock";
     private static final long MINUTES_10 = 10 * 60 * 1000;
 
@@ -22,9 +24,18 @@ public class AlarmReceiver extends BroadcastReceiver {
         AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, intent, 0);
 
         alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + MINUTES_10, MINUTES_10, alarmIntent);
+    }
+
+    public static void stopMirrorUpdates(Context context) {
+        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, intent, 0);
+
+        alarmMgr.cancel(alarmIntent);
     }
 
     @Override

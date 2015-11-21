@@ -266,6 +266,7 @@ public class MirrorActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        AlarmReceiver.stopMirrorUpdates(this);
         Intent intent = new Intent(this, SetUpActivity.class);
         startActivity(intent);
     }

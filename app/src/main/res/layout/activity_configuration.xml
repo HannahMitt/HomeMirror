@@ -42,8 +42,8 @@
                 style="@style/ConfigurationItemText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
                 android:layout_marginLeft="@dimen/item_margin"
+                android:layout_marginTop="0dp"
                 android:text="Farenheit" />
 
         </RadioGroup>
@@ -127,8 +127,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/location_title"
-                    android:layout_toRightOf="@id/location_title"
                     android:layout_marginLeft="@dimen/item_margin"
+                    android:layout_toRightOf="@id/location_title"
                     android:text="Couldn't detect a recent location" />
             </RelativeLayout>
 
@@ -187,5 +187,12 @@
             android:layout_marginTop="@dimen/item_margin"
             android:text="@string/launch"
             android:textSize="@dimen/configuration_text_size" />
+
+        <TextView
+            style="@style/ConfigurationDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_margin"
+            android:text="To get back to Set Up and stop mirror updates, swipe up from bottom of launched mirror, and press Back." />
     </LinearLayout>
 </ScrollView>
