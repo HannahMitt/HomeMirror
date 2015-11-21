@@ -1,6 +1,7 @@
 package com.morristaedt.mirror.modules;
 
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.morristaedt.mirror.requests.YahooFinanceRequest;
@@ -8,7 +9,6 @@ import com.morristaedt.mirror.requests.YahooStockResponse;
 
 import java.math.BigDecimal;
 
-import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 
@@ -34,13 +34,6 @@ public class YahooFinanceModule {
             protected YahooStockResponse doInBackground(Void... params) {
                 RestAdapter restAdapter = new RestAdapter.Builder()
                         .setEndpoint("http://query.yahooapis.com/v1/public")
-                        .setErrorHandler(new ErrorHandler() {
-                            @Override
-                            public Throwable handleError(RetrofitError cause) {
-                                Log.w("mirror", "Yahoo Finance error: " + cause);
-                                return cause;
-                            }
-                        })
                         .build();
 
                 YahooFinanceRequest service = restAdapter.create(YahooFinanceRequest.class);
@@ -48,11 +41,16 @@ public class YahooFinanceModule {
                 String query = "select * from yahoo.finance.quotes where symbol in (\"" + stockName + "\")";
                 String env = "http://datatables.org/alltables.env";
                 String format = "json";
-                return service.getStockData(query, env, format);
+                try {
+                    return service.getStockData(query, env, format);
+                } catch (RetrofitError error) {
+                    Log.w("YahooFinanceModule", "YahooFinance error: " + error.getMessage());
+                    return null;
+                }
             }
 
             @Override
-            protected void onPostExecute(YahooStockResponse stockResponse) {
+            protected void onPostExecute(@Nullable YahooStockResponse stockResponse) {
                 if (stockResponse != null && stockResponse.getQuoteResponse() != null) {
                     YahooStockResponse.YahooQuoteResponse quoteResponse = stockResponse.getQuoteResponse();
                     if (quoteResponse.getPercentageChange().abs().compareTo(BigDecimal.valueOf(0.03)) >= 0) {

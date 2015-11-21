@@ -33,6 +33,10 @@ public class NewsModule {
                 } catch (RSSReaderException e) {
                     Log.e("NewsModule", "Error parsing RSS");
                     return null;
+                } catch (Exception e) {
+                    // not great to catch general exceptions, but this lib is being sketchy
+                    Log.e("NewsModule", "Error parsing RSS");
+                    return null;
                 }
             }
         }.execute();

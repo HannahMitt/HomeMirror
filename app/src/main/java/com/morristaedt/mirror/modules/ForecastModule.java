@@ -41,7 +41,7 @@ public class ForecastModule {
                 try {
                     return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);
                 } catch (RetrofitError error) {
-                    Log.w("mirror", "Forecast error: " + error.getMessage());
+                    Log.w("ForecastModule", "Forecast error: " + error.getMessage());
                     return null;
                 }
             }

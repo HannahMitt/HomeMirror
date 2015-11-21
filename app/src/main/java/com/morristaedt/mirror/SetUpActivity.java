@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -18,8 +19,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 
 public class SetUpActivity extends Activity {
 
@@ -51,7 +50,6 @@ public class SetUpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_configuration);
 
         mConfigSettings = new ConfigurationSettings(this);
@@ -113,7 +111,12 @@ public class SetUpActivity extends Activity {
         Criteria criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_COARSE);
         String provider = mLocationManager.getBestProvider(criteria, true);
-        mLocation = mLocationManager.getLastKnownLocation(provider);
+
+        try {
+            mLocation = mLocationManager.getLastKnownLocation(provider);
+        } catch (IllegalArgumentException e) {
+            Log.e("SetUpActivity", "Location manager could not use provider", e);
+        }
 
         if (mLocation == null) {
             mLocationView.setVisibility(View.VISIBLE);

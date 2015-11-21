@@ -1,6 +1,7 @@
 package com.morristaedt.mirror.modules;
 
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -9,7 +10,6 @@ import com.morristaedt.mirror.requests.XKCDResponse;
 
 import java.util.Calendar;
 
-import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 
@@ -34,27 +34,27 @@ public class XKCDModule {
             protected XKCDResponse doInBackground(Void... params) {
                 RestAdapter restAdapter = new RestAdapter.Builder()
                         .setEndpoint("http://xkcd.com")
-                        .setErrorHandler(new ErrorHandler() {
-                            @Override
-                            public Throwable handleError(RetrofitError cause) {
-                                Log.w("mirror", "XKCD error: " + cause);
-                                return null;
-                            }
-                        })
                         .build();
 
                 XKCDRequest service = restAdapter.create(XKCDRequest.class);
-                return service.getLatestXKCD();
+                try {
+                    return service.getLatestXKCD();
+                } catch (RetrofitError e) {
+                    Log.w("XKCDModule", "Error loading xkcd", e);
+                    return null;
+                }
             }
 
             @Override
-            protected void onPostExecute(XKCDResponse xkcdResponse) {
-                Calendar today = Calendar.getInstance();
-                if (!TextUtils.isEmpty(xkcdResponse.img) && xkcdResponse.day == today.get(Calendar.DAY_OF_MONTH) && xkcdResponse.month == (today.get(Calendar.MONTH) + 1) && xkcdResponse.year == today.get(Calendar.YEAR)) {
-                    listener.onNewXKCDToday(xkcdResponse.img);
-                } else {
-                    listener.onNewXKCDToday(null);
+            protected void onPostExecute(@Nullable XKCDResponse xkcdResponse) {
+                if (xkcdResponse != null) {
+                    Calendar today = Calendar.getInstance();
+                    if (!TextUtils.isEmpty(xkcdResponse.img) && xkcdResponse.day == today.get(Calendar.DAY_OF_MONTH) && xkcdResponse.month == (today.get(Calendar.MONTH) + 1) && xkcdResponse.year == today.get(Calendar.YEAR)) {
+                        listener.onNewXKCDToday(xkcdResponse.img);
+                        return;
+                    }
                 }
+                listener.onNewXKCDToday(null);
             }
         }.execute();
 
