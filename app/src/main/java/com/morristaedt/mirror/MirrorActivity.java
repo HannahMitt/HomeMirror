@@ -34,8 +34,6 @@ import java.lang.ref.WeakReference;
 
 public class MirrorActivity extends ActionBarActivity {
 
-    private static final boolean DEMO_MODE = false;
-
     @NonNull
     private ConfigurationSettings mConfigSettings;
 
@@ -244,7 +242,7 @@ public class MirrorActivity extends ActionBarActivity {
             mCalendarDetailsText.setVisibility(View.GONE);
         }
 
-        if (mConfigSettings.showStock() && WeekUtil.isWeekday() && WeekUtil.afterFive()) {
+        if (mConfigSettings.showStock() && (ConfigurationSettings.isDemoMode() || WeekUtil.isWeekdayAfterFive())) {
             YahooFinanceModule.getStockForToday(mConfigSettings.getStockTickerSymbol(), mStockListener);
         } else {
             mStockText.setVisibility(View.GONE);
@@ -255,15 +253,6 @@ public class MirrorActivity extends ActionBarActivity {
             mMoodModule.getCurrentMood(mMoodListener);
         } else {
             mMoodText.setVisibility(View.GONE);
-        }
-    }
-
-    private void showDemoMode() {
-        if (DEMO_MODE) {
-            mBikeTodayText.setVisibility(View.VISIBLE);
-            mStockText.setVisibility(View.VISIBLE);
-            mWaterPlants.setVisibility(View.VISIBLE);
-            mGroceryList.setVisibility(View.VISIBLE);
         }
     }
 

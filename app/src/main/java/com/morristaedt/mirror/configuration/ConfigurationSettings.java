@@ -13,6 +13,11 @@ import com.morristaedt.mirror.requests.ForecastRequest;
  */
 public class ConfigurationSettings {
 
+    /**
+     * Hardcode on to enable features outside of their regularly scheduled hours
+     */
+    private static final boolean DEMO_MODE = false;
+
     private static final String PREFS_MIRROR = "MirrorPrefs";
 
     private static final String FORECAST_UNITS = "forecast_units";
@@ -174,5 +179,14 @@ public class ConfigurationSettings {
 
     public static boolean isDebugBuild() {
         return BuildConfig.DEBUG;
+    }
+
+    /**
+     * Whether we're ignoring timing rules for features
+     *
+     * @return
+     */
+    public static boolean isDemoMode() {
+        return DEMO_MODE;
     }
 }

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.requests.YahooFinanceRequest;
 import com.morristaedt.mirror.requests.YahooStockResponse;
 
@@ -53,7 +54,7 @@ public class YahooFinanceModule {
             protected void onPostExecute(@Nullable YahooStockResponse stockResponse) {
                 if (stockResponse != null && stockResponse.getQuoteResponse() != null) {
                     YahooStockResponse.YahooQuoteResponse quoteResponse = stockResponse.getQuoteResponse();
-                    if (quoteResponse.getPercentageChange().abs().compareTo(BigDecimal.valueOf(0.03)) >= 0) {
+                    if (ConfigurationSettings.isDemoMode() || quoteResponse.getPercentageChange().abs().compareTo(BigDecimal.valueOf(0.03)) >= 0) {
                         listener.onNewStockPrice(quoteResponse);
                         return;
                     }

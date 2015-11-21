@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.morristaedt.mirror.R;
+import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.requests.ForecastRequest;
 import com.morristaedt.mirror.requests.ForecastResponse;
 import com.morristaedt.mirror.utils.WeekUtil;
@@ -53,7 +54,7 @@ public class ForecastModule {
                         listener.onWeatherToday(forecastResponse.currently.getDisplayTemperature() + " " + forecastResponse.currently.summary);
                     }
 
-                    if (WeekUtil.isWeekday() && !WeekUtil.afterFive() && forecastResponse.hourly != null && forecastResponse.hourly.data != null) {
+                    if (forecastResponse.hourly != null && forecastResponse.hourly.data != null && (ConfigurationSettings.isDemoMode() || WeekUtil.isWeekdayBeforeFive())) {
                         listener.onShouldBike(true, shouldBikeToday(forecastResponse.hourly.data));
                     } else {
                         listener.onShouldBike(false, true);

@@ -1,10 +1,12 @@
 package com.morristaedt.mirror.modules;
 
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.requests.XKCDRequest;
 import com.morristaedt.mirror.requests.XKCDResponse;
 
@@ -47,14 +49,18 @@ public class XKCDModule {
 
             @Override
             protected void onPostExecute(@Nullable XKCDResponse xkcdResponse) {
-                if (xkcdResponse != null) {
-                    Calendar today = Calendar.getInstance();
-                    if (!TextUtils.isEmpty(xkcdResponse.img) && xkcdResponse.day == today.get(Calendar.DAY_OF_MONTH) && xkcdResponse.month == (today.get(Calendar.MONTH) + 1) && xkcdResponse.year == today.get(Calendar.YEAR)) {
+                if (xkcdResponse != null && !TextUtils.isEmpty(xkcdResponse.img)) {
+                    if (ConfigurationSettings.isDemoMode() || isTodaysXKCD(xkcdResponse)) {
                         listener.onNewXKCDToday(xkcdResponse.img);
                         return;
                     }
                 }
                 listener.onNewXKCDToday(null);
+            }
+
+            private boolean isTodaysXKCD(@NonNull XKCDResponse xkcdResponse) {
+                Calendar today = Calendar.getInstance();
+                return xkcdResponse.day == today.get(Calendar.DAY_OF_MONTH) && xkcdResponse.month == (today.get(Calendar.MONTH) + 1) && xkcdResponse.year == today.get(Calendar.YEAR);
             }
         }.execute();
 

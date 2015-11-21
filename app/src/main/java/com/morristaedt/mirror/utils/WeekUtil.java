@@ -12,8 +12,16 @@ public class WeekUtil {
         return dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY;
     }
 
-    public static boolean afterFive(){
+    public static boolean afterFive() {
         int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         return hourOfDay >= 17;
+    }
+
+    public static boolean isWeekdayBeforeFive() {
+        return isWeekday() && !afterFive();
+    }
+
+    public static boolean isWeekdayAfterFive() {
+        return isWeekday() && afterFive();
     }
 }
