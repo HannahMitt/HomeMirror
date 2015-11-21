@@ -70,7 +70,6 @@ public class ForecastModule {
                     // Only check hourly forecast for today
                     if (hourCalendar.get(Calendar.DAY_OF_MONTH) == dayOfMonthToday) {
                         int hourOfDay = hourCalendar.get(Calendar.HOUR_OF_DAY);
-                        Log.i("mirror", "Hour of day is " + hourOfDay + " with precipProb " + hour.precipProbability);
                         if (hourOfDay >= 7 && hourOfDay <= 11) {
                             if (hour.precipProbability >= 0.3) {
                                 return false;

@@ -89,8 +89,12 @@ public class MirrorActivity extends ActionBarActivity {
 
         @Override
         public void onShouldBike(boolean showToday, boolean shouldBike) {
-            mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
-            mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+            if (mConfigSettings.showBikingHint()) {
+                mBikeTodayText.setVisibility(showToday ? View.VISIBLE : View.GONE);
+                mBikeTodayText.setText(shouldBike ? R.string.bike_today : R.string.no_bike_today);
+            } else {
+                mBikeTodayText.setVisibility(View.GONE);
+            }
         }
     };
 

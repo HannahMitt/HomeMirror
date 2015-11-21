@@ -49,6 +49,14 @@
         </RadioGroup>
 
         <CheckBox
+            android:id="@+id/biking_checkbox"
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/biking_hint" />
+
+        <CheckBox
             android:id="@+id/mood_detection_checkbox"
             style="@style/ConfigurationItemText"
             android:layout_width="wrap_content"
@@ -193,6 +201,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_margin"
-            android:text="To get back to Set Up and stop mirror updates, swipe up from bottom of launched mirror, and press Back." />
+            android:text="@string/how_to_stop" />
     </LinearLayout>
 </ScrollView>

@@ -45,5 +45,7 @@
     <string name="found_location">Found location</string>
     <string name="mood_explanation">Uses the front facing camera to read your expression</string>
     <string name="stock_description">Displays on weekdays if the stock swings more than 3%</string>
+    <string name="biking_hint">Show biking weather hint</string>
+    <string name="how_to_stop">To get back to Set Up and stop mirror updates, swipe up from bottom of launched mirror, and press Back.</string>
 
 </resources>
