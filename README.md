@@ -3,7 +3,7 @@ Android application powering the mirror in my house
 
 [Google Play Link](https://play.google.com/store/apps/details?id=com.morristaedt.mirror)
 
-<img src="https://github.com/HannahMitt/HomeMirror/blob/master/design/IMG_20150825_191621.jpg" width="400"/>
+<img src="https://raw.githubusercontent.com/HannahMitt/HomeMirror/master/design/IMG_20151121_183522%20(1).jpg" width="400"/>
 
 Software
 ====
