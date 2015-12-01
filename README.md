@@ -33,6 +33,8 @@ When its mirror time, I also recommend turning on the device Developer Option: "
 Making a Mirror
 ====
 
+[Video walk-through on adafruit (Thank you Becky!)](https://learn.adafruit.com/android-smart-home-mirror)
+
 1. Obtain Android device
 ----
 We had too many. Sad old devices are ideal.
