@@ -118,44 +118,44 @@ public class SetUpActivity extends Activity {
 
         try {
             mLocation = mLocationManager.getLastKnownLocation(provider);
-        } catch (IllegalArgumentException e) {
-            Log.e("SetUpActivity", "Location manager could not use provider", e);
-        }
 
-        if (mLocation == null) {
-            mLocationView.setVisibility(View.VISIBLE);
-            mLocationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                    if (location != null) {
-                        Toast.makeText(SetUpActivity.this, R.string.found_location, Toast.LENGTH_SHORT).show();
-                        mLocation = location;
-                        mConfigSettings.setLatLon(String.valueOf(mLocation.getLatitude()), String.valueOf(mLocation.getLongitude()));
-                        mLocationManager.removeUpdates(this);
-                        if (mLocationView != null) {
-                            mLocationView.setVisibility(View.GONE);
+            if (mLocation == null) {
+                mLocationView.setVisibility(View.VISIBLE);
+                mLocationListener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        if (location != null) {
+                            Toast.makeText(SetUpActivity.this, R.string.found_location, Toast.LENGTH_SHORT).show();
+                            mLocation = location;
+                            mConfigSettings.setLatLon(String.valueOf(mLocation.getLatitude()), String.valueOf(mLocation.getLongitude()));
+                            mLocationManager.removeUpdates(this);
+                            if (mLocationView != null) {
+                                mLocationView.setVisibility(View.GONE);
+                            }
                         }
                     }
-                }
 
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-                }
+                    }
 
-                @Override
-                public void onProviderEnabled(String provider) {
+                    @Override
+                    public void onProviderEnabled(String provider) {
 
-                }
+                    }
 
-                @Override
-                public void onProviderDisabled(String provider) {
+                    @Override
+                    public void onProviderDisabled(String provider) {
 
-                }
-            };
-            mLocationManager.requestLocationUpdates(provider, HOUR_MILLIS, METERS_MIN, mLocationListener);
-        } else {
-            mLocationView.setVisibility(View.GONE);
+                    }
+                };
+                mLocationManager.requestLocationUpdates(provider, HOUR_MILLIS, METERS_MIN, mLocationListener);
+            } else {
+                mLocationView.setVisibility(View.GONE);
+            }
+        } catch (IllegalArgumentException e) {
+            Log.e("SetUpActivity", "Location manager could not use provider", e);
         }
     }
 
