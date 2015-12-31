@@ -12,6 +12,7 @@ import com.morristaedt.mirror.utils.WeekUtil;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -40,7 +41,7 @@ public class ForecastModule {
                 String excludes = "minutely,daily,flags";
 
                 try {
-                    return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units);
+                    return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units, Locale.getDefault().getLanguage());
                 } catch (RetrofitError error) {
                     Log.w("ForecastModule", "Forecast error: " + error.getMessage());
                     return null;
