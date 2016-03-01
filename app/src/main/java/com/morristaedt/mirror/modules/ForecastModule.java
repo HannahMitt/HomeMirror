@@ -1,13 +1,14 @@
 package com.morristaedt.mirror.modules;
 
-import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.morristaedt.mirror.R;
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.requests.ForecastRequest;
 import com.morristaedt.mirror.requests.ForecastResponse;
+import com.morristaedt.mirror.requests.OpenWeatherRequest;
+import com.morristaedt.mirror.requests.OpenWeatherResponse;
 import com.morristaedt.mirror.utils.WeekUtil;
 
 import java.util.Calendar;
@@ -28,7 +29,14 @@ public class ForecastModule {
         void onShouldBike(boolean showToday, boolean shouldBike);
     }
 
-    public static void getHourlyForecast(final Resources resources, final String units, final String lat, final String lon, final ForecastListener listener) {
+    /**
+     * @param apiKey   The api key for the forecast.io weather api
+     * @param units
+     * @param lat
+     * @param lon
+     * @param listener
+     */
+    public static void getForecastIOHourlyForecast(final String apiKey, final String units, final String lat, final String lon, final ForecastListener listener) {
         new AsyncTask<Void, Void, ForecastResponse>() {
 
             @Override
@@ -41,7 +49,7 @@ public class ForecastModule {
                 String excludes = "minutely,daily,flags";
 
                 try {
-                    return service.getHourlyForecast(resources.getString(R.string.dark_sky_api_key), lat, lon, excludes, units, Locale.getDefault().getLanguage());
+                    return service.getHourlyForecast(apiKey, lat, lon, excludes, units, Locale.getDefault().getLanguage());
                 } catch (RetrofitError error) {
                     Log.w("ForecastModule", "Forecast error: " + error.getMessage());
                     return null;
@@ -88,5 +96,54 @@ public class ForecastModule {
             }
         }.execute();
 
+    }
+
+    /**
+     * @param apiKey   The api key for the openweather api
+     * @param units
+     * @param lat
+     * @param lon
+     * @param listener
+     */
+    public static void getOpenWeatherForecast(final String apiKey, final String units, final String lat, final String lon, final ForecastListener listener) {
+        new AsyncTask<Void, Void, OpenWeatherResponse>() {
+
+            @Override
+            protected OpenWeatherResponse doInBackground(Void... params) {
+                RestAdapter restAdapter = new RestAdapter.Builder()
+                        .setEndpoint("http://api.openweathermap.org")
+                        .build();
+
+                OpenWeatherRequest service = restAdapter.create(OpenWeatherRequest.class);
+
+                try {
+                    return service.getCurrentForecast(apiKey, lat, lon, getOpenWeatherUnits(units), Locale.getDefault().getLanguage());
+                } catch (RetrofitError error) {
+                    Log.w("ForecastModule", "Forecast error: " + error.getMessage());
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(OpenWeatherResponse response) {
+                if (response != null) {
+                    if (response.main != null) {
+                        listener.onWeatherToday(response.main.getDisplayTemperature() + " " + response.getWeatherDescription());
+                    }
+                }
+            }
+
+        }.execute();
+
+    }
+
+    @NonNull
+    private static String getOpenWeatherUnits(String units) {
+        if (units.equalsIgnoreCase(ForecastRequest.UNITS_SI)) {
+            return OpenWeatherRequest.UNITS_METRIC;
+        } else if (units.equalsIgnoreCase(ForecastRequest.UNITS_US)) {
+            return OpenWeatherRequest.UNITS_IMPERIAL;
+        }
+        return units;
     }
 }

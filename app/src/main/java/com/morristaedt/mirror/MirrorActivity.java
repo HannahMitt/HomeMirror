@@ -221,7 +221,16 @@ public class MirrorActivity extends ActionBarActivity {
         mWaterPlants.setVisibility(ChoresModule.waterPlantsToday() ? View.VISIBLE : View.GONE);
         mGroceryList.setVisibility(ChoresModule.makeGroceryListToday() ? View.VISIBLE : View.GONE);
 
-        ForecastModule.getHourlyForecast(getResources(), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        // Get the API key for whichever weather service API key is available
+        // These should be declared as a string in xml
+        int forecastApiKeyRes = getResources().getIdentifier("dark_sky_api_key", "string", getPackageName());
+        int openWeatherApiKeyRes = getResources().getIdentifier("open_weather_api_key", "string", getPackageName());
+
+        if (forecastApiKeyRes != 0) {
+            ForecastModule.getForecastIOHourlyForecast(getString(forecastApiKeyRes), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        } else if (openWeatherApiKeyRes != 0) {
+            ForecastModule.getOpenWeatherForecast(getString(openWeatherApiKeyRes), mConfigSettings.getForecastUnits(), mConfigSettings.getLatitude(), mConfigSettings.getLongitude(), mForecastListener);
+        }
 
         if (mConfigSettings.showNewsHeadline()) {
             NewsModule.getNewsHeadline(mNewsListener);
