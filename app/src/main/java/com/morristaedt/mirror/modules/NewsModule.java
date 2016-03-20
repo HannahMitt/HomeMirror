@@ -29,7 +29,11 @@ public class NewsModule {
                 String url = "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk";
                 try {
                     RSSFeed feed = rssReader.load(url);
-                    return feed.getItems().get(0).getTitle();
+                    String headline = feed.getItems().get(0).getTitle();
+                    for (int i = 1; i < 10; ++i) {
+                        headline += "                " + feed.getItems().get(i).getTitle();
+                    }
+                    return headline;
                 } catch (RSSReaderException e) {
                     Log.e("NewsModule", "Error parsing RSS");
                     return null;

@@ -31,6 +31,10 @@
         <item name="android:paddingBottom">@dimen/item_margin</item>
     </style>
 
+    <style name="MirrorMarqueeText" parent="MirrorListText">
+        <item name="android:gravity"/>
+    </style>
+
     <style name="ConfigurationItemText">
         <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
         <item name="android:textSize">@dimen/configuration_text_size</item>
