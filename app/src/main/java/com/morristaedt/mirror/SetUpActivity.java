@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -43,10 +44,17 @@ public class SetUpActivity extends Activity {
     private CheckBox mShowNewsHeadlineCheckbox;
     private CheckBox mXKCDCheckbox;
     private CheckBox mXKCDInvertCheckbox;
+    private CheckBox mCountdownCheckbox;
+    private CheckBox mNewCountdownCheckbox;
+    private View mNewCountdownView;
     private View mLocationView;
     private EditText mLatitude;
     private EditText mLongitude;
     private EditText mStockTickerSymbol;
+    private EditText mCountdownDays;
+    private EditText mCountdownHours;
+    private EditText mCountdownMins;
+    private EditText mCountdownSecs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +95,48 @@ public class SetUpActivity extends Activity {
 
         mStockTickerSymbol = (EditText) findViewById(R.id.stock_name);
         mStockTickerSymbol.setText(mConfigSettings.getStockTickerSymbol());
+
+        mCountdownCheckbox = (CheckBox) findViewById(R.id.countdown_checkbox);
+        mCountdownCheckbox.setChecked(mConfigSettings.showCountdown());
+
+        mNewCountdownCheckbox = (CheckBox) findViewById(R.id.countdown_new_checkbox);
+        mNewCountdownCheckbox.setChecked(false);
+        if (!mConfigSettings.showCountdown()) {
+            mNewCountdownCheckbox.setVisibility(View.GONE);
+        }
+
+        mNewCountdownView = findViewById(R.id.new_countdown_view);
+        mNewCountdownView.setVisibility(View.GONE);
+
+        mCountdownDays = (EditText) findViewById(R.id.countdown_days);
+        mCountdownHours = (EditText) findViewById(R.id.countdown_hours);
+        mCountdownMins = (EditText) findViewById(R.id.countdown_mins);
+        mCountdownSecs = (EditText) findViewById(R.id.countdown_secs);
+
+        mCountdownCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    mNewCountdownCheckbox.setVisibility(View.VISIBLE);
+                } else {
+                    mNewCountdownCheckbox.setChecked(false);
+                    mNewCountdownCheckbox.setVisibility(View.GONE);
+                    mNewCountdownView.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        mNewCountdownCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    mNewCountdownView.setVisibility(View.VISIBLE);
+                } else {
+                    mNewCountdownView.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
         findViewById(R.id.launch_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +216,16 @@ public class SetUpActivity extends Activity {
         mConfigSettings.setShowNextCalendarEvent(mShowNextCaledarEventCheckbox.isChecked());
         mConfigSettings.setShowNewsHeadline(mShowNewsHeadlineCheckbox.isChecked());
         mConfigSettings.setXKCDPreference(mXKCDCheckbox.isChecked(), mXKCDInvertCheckbox.isChecked());
+        mConfigSettings.setShowCountdown(mCountdownCheckbox.isChecked());
+        if (mNewCountdownCheckbox.isChecked()){
+            mConfigSettings.setCountdownTime(
+                    Integer.parseInt("0"+mCountdownDays.getText().toString()),
+                    Integer.parseInt("0"+mCountdownHours.getText().toString()),
+                    Integer.parseInt("0"+mCountdownMins.getText().toString()),
+                    Integer.parseInt("0"+mCountdownSecs.getText().toString()));
+            mNewCountdownCheckbox.setChecked(false);
+            mNewCountdownView.setVisibility(View.GONE);
+        }
 
         if (mLocation == null) {
             mConfigSettings.setLatLon(mLatitude.getText().toString(), mLongitude.getText().toString());

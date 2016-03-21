@@ -47,5 +47,15 @@
     <string name="stock_description">Displays on weekdays if the stock swings more than 3%</string>
     <string name="biking_hint">Show biking weather hint</string>
     <string name="how_to_stop">To get back to Set Up and stop mirror updates, swipe up from bottom of launched mirror, and press Back.</string>
+    <string name="show_countdown">Show countdown</string>
+    <string name="new_countdown">New countdown</string>
+    <string name="time_day">day</string>
+    <string name="time_hour">hour</string>
+    <string name="time_min">min</string>
+    <string name="time_sec">sec</string>
+    <string name="time_day_short">d</string>
+    <string name="time_hour_short">h</string>
+    <string name="time_min_short">m</string>
+    <string name="time_sec_short">s</string>
 
 </resources>

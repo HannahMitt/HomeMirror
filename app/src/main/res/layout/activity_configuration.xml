@@ -113,6 +113,99 @@
         </LinearLayout>
 
         <LinearLayout
+        android:id="@+id/countdown_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/countdown_checkbox"
+                style="@style/ConfigurationItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/show_countdown" />
+
+            <CheckBox
+                android:id="@+id/countdown_new_checkbox"
+                style="@style/ConfigurationItemText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/new_countdown" />
+
+            <LinearLayout
+                android:id="@+id/new_countdown_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/countdown_days"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/time_day"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_day_short" />
+
+                <EditText
+                    android:id="@+id/countdown_hours"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/time_hour"
+                    android:maxLength="2"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_hour_short" />
+
+                <EditText
+                    android:id="@+id/countdown_mins"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/time_min"
+                    android:maxLength="2"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_min_short" />
+
+                <EditText
+                    android:id="@+id/countdown_secs"
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/time_sec"
+                    android:maxLength="2"
+                    android:inputType="number" />
+
+                <TextView
+                    style="@style/ConfigurationEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_sec_short" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/location_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
