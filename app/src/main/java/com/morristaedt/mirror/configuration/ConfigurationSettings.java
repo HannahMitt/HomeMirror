@@ -2,6 +2,7 @@ package com.morristaedt.mirror.configuration;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -21,6 +22,7 @@ public class ConfigurationSettings {
     private static final String PREFS_MIRROR = "MirrorPrefs";
 
     private static final String FORECAST_UNITS = "forecast_units";
+    private static final String TEXT_COLOR = "text_color";
     private static final String BIKING_HINT = "biking_hint";
     private static final String USE_MOOD_DETECTION = "mood_detection";
     private static final String SHOW_CALENDAR = "show_calendar";
@@ -48,6 +50,8 @@ public class ConfigurationSettings {
 
     private String mStockTickerSymbol;
 
+    private int mTextColor;
+
     public ConfigurationSettings(Context context) {
         mSharedPrefs = context.getSharedPreferences(PREFS_MIRROR, Context.MODE_PRIVATE);
         readPrefs();
@@ -55,6 +59,7 @@ public class ConfigurationSettings {
 
     private void readPrefs() {
         mForecastUnits = mSharedPrefs.getString(FORECAST_UNITS, ForecastRequest.UNITS_US);
+        mTextColor = mSharedPrefs.getInt(TEXT_COLOR, Color.WHITE);
         mShowBikingHint = mSharedPrefs.getBoolean(BIKING_HINT, false);
         mShowMoodDetection = mSharedPrefs.getBoolean(USE_MOOD_DETECTION, false);
         mShowNextCalendarEvent = mSharedPrefs.getBoolean(SHOW_CALENDAR, false);
@@ -71,6 +76,25 @@ public class ConfigurationSettings {
     public void setIsCelsius(boolean isCelsius) {
         SharedPreferences.Editor editor = mSharedPrefs.edit();
         editor.putString(FORECAST_UNITS, isCelsius ? ForecastRequest.UNITS_SI : ForecastRequest.UNITS_US);
+        editor.apply();
+    }
+
+    public void setTextColorRed(int red){
+        setTextColor(Color.rgb(red, Color.green(mTextColor), Color.blue(mTextColor)));
+    }
+
+    public void setTextColorGreen(int green){
+        setTextColor(Color.rgb(Color.red(mTextColor), green, Color.blue(mTextColor)));
+    }
+
+    public void setTextColorBlue(int blue){
+        setTextColor(Color.rgb(Color.red(mTextColor), Color.green(mTextColor), blue));
+    }
+
+    public void setTextColor(int color){
+        mTextColor = color;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putInt(TEXT_COLOR, color);
         editor.apply();
     }
 
@@ -135,6 +159,10 @@ public class ConfigurationSettings {
 
     public String getForecastUnits() {
         return mForecastUnits;
+    }
+
+    public int getTextColor() {
+        return mTextColor;
     }
 
     public boolean showBikingHint() {
