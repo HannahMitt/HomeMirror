@@ -58,12 +58,14 @@ public class SetUpActivity extends Activity {
     private EditText mCountdownDays;
     private EditText mCountdownHours;
     private EditText mCountdownMins;
-    private EditText mCountdownSecs;    private SeekBar mColorPickerRed;
+    private EditText mCountdownSecs;
+    private SeekBar mColorPickerRed;
     private SeekBar mColorPickerGreen;
     private SeekBar mColorPickerBlue;
     private TextView mColorShowerRed;
     private TextView mColorShowerGreen;
     private TextView mColorShowerBlue;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
