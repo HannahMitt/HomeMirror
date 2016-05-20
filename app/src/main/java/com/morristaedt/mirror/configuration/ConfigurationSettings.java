@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import com.morristaedt.mirror.BuildConfig;
 import com.morristaedt.mirror.requests.ForecastRequest;
 
+import java.util.Date;
+
 /**
  * Created by HannahMitt on 9/26/15.
  */
@@ -32,6 +34,8 @@ public class ConfigurationSettings {
     private static final String LAT = "lat";
     private static final String LON = "lon";
     private static final String STOCK_TICKER = "stock_ticker";
+    private static final String SHOW_COUNTDOWN = "show_countdown";
+    private static final String COUNTDOWN_END = "countdown_end";
 
     @NonNull
     private SharedPreferences mSharedPrefs;
@@ -44,6 +48,9 @@ public class ConfigurationSettings {
     private boolean mShowNewsHeadline;
     private boolean mShowXKCD;
     private boolean mInvertXKCD;
+    private boolean mShowCountdown;
+
+    private long mCountdownEnd;
 
     private String mLatitude;
     private String mLongitude;
@@ -66,6 +73,8 @@ public class ConfigurationSettings {
         mShowNewsHeadline = mSharedPrefs.getBoolean(SHOW_HEADLINE, false);
         mShowXKCD = mSharedPrefs.getBoolean(SHOW_XKCD, false);
         mInvertXKCD = mSharedPrefs.getBoolean(INVERT_XKCD, false);
+        mShowCountdown = mSharedPrefs.getBoolean(SHOW_COUNTDOWN, false);
+        mCountdownEnd = mSharedPrefs.getLong(COUNTDOWN_END, System.currentTimeMillis());
 
         mLatitude = mSharedPrefs.getString(LAT, "");
         mLongitude = mSharedPrefs.getString(LON, "");
@@ -153,6 +162,21 @@ public class ConfigurationSettings {
         editor.apply();
     }
 
+    public void setShowCountdown(boolean showCountdown){
+        mShowCountdown = showCountdown;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putBoolean(SHOW_COUNTDOWN, showCountdown);
+        editor.apply();
+    }
+
+    public void setCountdownTime(int days, int hours, int mins, int secs){
+        mCountdownEnd = System.currentTimeMillis();
+        mCountdownEnd += (((days*24l+hours)*60l+mins)*60l+secs)*1000l;
+        SharedPreferences.Editor editor = mSharedPrefs.edit();
+        editor.putLong(COUNTDOWN_END, mCountdownEnd);
+        editor.apply();
+    }
+
     public boolean getIsCelsius() {
         return ForecastRequest.UNITS_SI.equals(mForecastUnits);
     }
@@ -187,6 +211,14 @@ public class ConfigurationSettings {
 
     public boolean invertXKCD() {
         return mInvertXKCD;
+    }
+
+    public boolean showCountdown(){
+        return mShowCountdown;
+    }
+
+    public Date getCountdownEnd(){
+        return new Date(mCountdownEnd);
     }
 
     public String getLatitude() {

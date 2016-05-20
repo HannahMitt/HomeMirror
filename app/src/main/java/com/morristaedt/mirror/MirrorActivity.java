@@ -20,6 +20,7 @@ import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.modules.BirthdayModule;
 import com.morristaedt.mirror.modules.CalendarModule;
 import com.morristaedt.mirror.modules.ChoresModule;
+import com.morristaedt.mirror.modules.CountdownModule;
 import com.morristaedt.mirror.modules.DayModule;
 import com.morristaedt.mirror.modules.ForecastModule;
 import com.morristaedt.mirror.modules.MoodModule;
@@ -52,6 +53,7 @@ public class MirrorActivity extends ActionBarActivity {
     private TextView mNewsHeadline;
     private TextView mCalendarTitleText;
     private TextView mCalendarDetailsText;
+    private TextView mCountdownText;
 
     private XKCDModule.XKCDListener mXKCDListener = new XKCDModule.XKCDListener() {
         @Override
@@ -137,6 +139,19 @@ public class MirrorActivity extends ActionBarActivity {
         }
     };
 
+    private CountdownModule.CountdownListener mCountdownListener = new CountdownModule.CountdownListener() {
+        @Override
+        public void onCountdownUpdate(final String timeLeft) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mCountdownText.setVisibility(View.VISIBLE);
+                    mCountdownText.setText(timeLeft);
+                }
+            });
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,6 +191,7 @@ public class MirrorActivity extends ActionBarActivity {
         mNewsHeadline = (TextView) findViewById(R.id.news_headline);
         mCalendarTitleText = (TextView) findViewById(R.id.calendar_title);
         mCalendarDetailsText = (TextView) findViewById(R.id.calendar_details);
+        mCountdownText = (TextView) findViewById(R.id.countdown_text);
 
         if (mConfigSettings.invertXKCD()) {
             //Negative of XKCD image
@@ -276,6 +292,12 @@ public class MirrorActivity extends ActionBarActivity {
             mMoodModule.getCurrentMood(mMoodListener);
         } else {
             mMoodText.setVisibility(View.GONE);
+        }
+
+        if (mConfigSettings.showCountdown()){
+            CountdownModule.getTimeRemaining(mConfigSettings.getCountdownEnd(), mCountdownListener);
+        } else {
+            mCountdownText.setVisibility(View.GONE);
         }
     }
 

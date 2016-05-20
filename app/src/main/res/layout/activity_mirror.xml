@@ -113,7 +113,7 @@
 
         <TextView
             android:id="@+id/news_headline"
-            style="@style/MirrorListText"
+            style="@style/MirrorMarqueeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
@@ -141,6 +141,15 @@
             android:drawableRight="@drawable/smile"
             android:visibility="gone"
             tools:text="Just be happy"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/countdown_text"
+            style="@style/MirrorListText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="Time is up!"
             tools:visibility="visible" />
 
     </LinearLayout>
