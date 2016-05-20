@@ -48,6 +48,123 @@
 
         </RadioGroup>
 
+        <TextView
+            style="@style/ConfigurationItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Text Color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="R" />
+
+                    <SeekBar
+                        android:id="@+id/ColorPickerRed"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="255"/>
+
+                    <TextView
+                        android:id="@+id/ColorShowerRed"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minEms="3"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="G" />
+
+                    <SeekBar
+                        android:id="@+id/ColorPickerGreen"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="255"/>
+
+                    <TextView
+                        android:id="@+id/ColorShowerGreen"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minEms="3"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="B" />
+
+                    <SeekBar
+                        android:id="@+id/ColorPickerBlue"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="255"/>
+
+                    <TextView
+                        android:id="@+id/ColorShowerBlue"
+                        style="@style/ConfigurationItemText"
+                        android:layout_margin="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minEms="3"
+                        android:text="0" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/colored_bar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                 />
+        </LinearLayout>
+
         <CheckBox
             android:id="@+id/biking_checkbox"
             style="@style/ConfigurationItemText"

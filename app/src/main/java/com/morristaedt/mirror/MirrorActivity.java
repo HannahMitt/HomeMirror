@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -222,7 +223,20 @@ public class MirrorActivity extends ActionBarActivity {
         setViewState();
     }
 
+    private void colorTextViews(ViewGroup mview){
+        for (int i = 0; i < mview.getChildCount(); i++) {
+            View view = mview.getChildAt(i);
+            if (view instanceof ViewGroup)
+                colorTextViews((ViewGroup) view);
+            else if (view instanceof TextView) {
+                ((TextView) view).setTextColor(mConfigSettings.getTextColor());
+            }
+        }
+    }
+
     private void setViewState() {
+        colorTextViews((ViewGroup) findViewById(R.id.main_layout));
+
         String birthday = BirthdayModule.getBirthday();
         if (TextUtils.isEmpty(birthday)) {
             mBirthdayText.setVisibility(View.GONE);
