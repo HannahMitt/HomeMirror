@@ -112,7 +112,7 @@
 
         <TextView
             android:id="@+id/news_headline"
-            style="@style/MirrorListText"
+            style="@style/MirrorMarqueeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
