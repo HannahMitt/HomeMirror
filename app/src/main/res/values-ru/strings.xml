@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">ДомашнееЗеркало</string>
+
+    <string name="default_mirror_mirror">Свет мой, зеркальце! Скажи, да всю правду доложи: я ль на свете всех милее, всех румяней и белее?. Hannah is the prettiest of them all.</string>
+
+    <!-- Owners -->
+    <string name="owners">Тигра</string>
+
+    <!-- Time module -->
+    <string name="good_morning">Доброе утро, %s</string>
+    <string name="good_afternoon">Добрый день, %s</string>
+    <string name="good_evening">Добрый вечер, %s</string>
+    <string name="late">Уже поздно, %s</string>
+    <string name="bedtime">Добрый вечер, %s\n\nIt\'s Пора спать.</string>
+
+    <!-- Forecast module -->
+    <string name="bike_today">Сегодня велопрогулка</string>
+    <string name="no_bike_today">Сегодня не будет велопрогулки</string>
+
+    <!--  Birthday module -->
+    <string name="happy_birthday">С днём рождения, %s!</string>
+
+    <!-- Chores module -->
+    <string name="water_plants">Полей растения</string>
+    <string name="grocery_list">Продуктовый список</string>
+
+    <!-- Mood module -->
+    <string name="it_gets_better">Взбодрись, дружище</string>
+    <string name="looking_good">Выглядите хорошо</string>
+    <string name="something_special">Ура! Привет солнышко.</string>
+
+    <!-- Set up -->
+    <string name="location">Местоположение</string>
+    <string name="set_up">Установка</string>
+    <string name="latitude">Широта</string>
+    <string name="longitude">Долгота</string>
+    <string name="launch">Обед</string>
+    <string name="mood_detection_option">Показать распознавание настроения</string>
+    <string name="show_xkcd">Показать новое xkcd</string>
+    <string name="invert_colors">Инвертировать комические цвета</string>
+    <string name="show_calendar_event">Покажи следующее календарное событие</string>
+    <string name="stock">Склад</string>
+    <string name="ticker_symbol">Символ тикера, т.e. GOOG</string>
+    <string name="show_headline">Покажи заголовок BBC</string>
+    <string name="found_location">Найдено местонахождение</string>
+    <string name="mood_explanation">Используется передняя камера чтобы расспознать ваше выражение лица</string>
+    <string name="stock_description">Показывать в будние дни если склад колебается больше чем на 3%</string>
+    <string name="biking_hint">Покажи подсказку о погоде для велопрогулок</string>
+    <string name="how_to_stop">Чтобы установить и остановить обновления зеркала, нужно вернуться обратно, проведя снизу вверх на запущенном зеркале, и нажать Обратно.</string>
+    <string name="show_countdown">Показать отсчёт</string>
+    <string name="new_countdown">Новый отсчёт</string>
+    <string name="time_day">День</string>
+    <string name="time_hour">Час</string>
+    <string name="time_min">Мин</string>
+    <string name="time_sec">Сек</string>
+    <string name="time_day_short">Д</string>
+    <string name="time_hour_short">ч</string>
+    <string name="time_min_short">м</string>
+    <string name="time_sec_short">с</string>
+
+</resources>
