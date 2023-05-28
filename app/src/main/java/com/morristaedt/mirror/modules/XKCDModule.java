@@ -5,13 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
 import com.morristaedt.mirror.requests.XKCDRequest;
 import com.morristaedt.mirror.requests.XKCDResponse;
-
 import java.util.Calendar;
-
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 
@@ -21,6 +18,7 @@ import retrofit.RetrofitError;
 public class XKCDModule {
 
     public interface XKCDListener {
+
         void onNewXKCDToday(String url);
     }
 
@@ -34,10 +32,7 @@ public class XKCDModule {
 
             @Override
             protected XKCDResponse doInBackground(Void... params) {
-                RestAdapter restAdapter = new RestAdapter.Builder()
-                        .setEndpoint("http://xkcd.com")
-                        .build();
-
+                RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://xkcd.com").build();
                 XKCDRequest service = restAdapter.create(XKCDRequest.class);
                 try {
                     return service.getLatestXKCD();
@@ -49,11 +44,9 @@ public class XKCDModule {
 
             @Override
             protected void onPostExecute(@Nullable XKCDResponse xkcdResponse) {
-                if (xkcdResponse != null && !TextUtils.isEmpty(xkcdResponse.img)) {
-                    if (ConfigurationSettings.isDemoMode() || isTodaysXKCD(xkcdResponse)) {
-                        listener.onNewXKCDToday(xkcdResponse.img);
-                        return;
-                    }
+                if (xkcdResponse != null && !TextUtils.isEmpty(xkcdResponse.img) && ConfigurationSettings.isDemoMode() || isTodaysXKCD(xkcdResponse)) {
+                    listener.onNewXKCDToday(xkcdResponse.img);
+                    return;
                 }
                 listener.onNewXKCDToday(null);
             }
@@ -63,6 +56,5 @@ public class XKCDModule {
                 return xkcdResponse.day == today.get(Calendar.DAY_OF_MONTH) && xkcdResponse.month == (today.get(Calendar.MONTH) + 1) && xkcdResponse.year == today.get(Calendar.YEAR);
             }
         }.execute();
-
     }
 }

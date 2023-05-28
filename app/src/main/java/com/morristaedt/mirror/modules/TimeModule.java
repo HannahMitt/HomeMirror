@@ -2,9 +2,7 @@ package com.morristaedt.mirror.modules;
 
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-
 import com.morristaedt.mirror.R;
-
 import java.util.Calendar;
 
 /**
@@ -20,14 +18,16 @@ public class TimeModule {
             timeRes = R.string.late;
         } else if (hour < 12) {
             timeRes = R.string.good_morning;
-        } else if (hour < 17) { // 5pm
+        } else if (hour < 17) {
+            // 5pm
             timeRes = R.string.good_afternoon;
-        } else if (hour < 22) { // 10pm
+        } else if (hour < 22) {
+            // 10pm
             timeRes = R.string.good_evening;
-        } else { // 10pm - midnight is bedtime
+        } else {
+            // 10pm - midnight is bedtime
             timeRes = R.string.bedtime;
         }
-
         return resources.getString(timeRes, resources.getString(R.string.owners));
     }
 }

@@ -2,7 +2,6 @@ package com.morristaedt.mirror.modules;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
 import org.mcsoxford.rss.RSSFeed;
 import org.mcsoxford.rss.RSSReader;
 import org.mcsoxford.rss.RSSReaderException;
@@ -11,12 +10,15 @@ import org.mcsoxford.rss.RSSReaderException;
  * Created by alex on 21/09/15.
  */
 public class NewsModule {
+
     public interface NewsListener {
+
         void onNewNews(String headline);
     }
 
     public static void getNewsHeadline(final NewsListener newsListener) {
         new AsyncTask<Void, Void, String>() {
+
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);

@@ -1,7 +1,6 @@
 package com.morristaedt.mirror.requests;
 
 import android.text.TextUtils;
-
 import java.util.ArrayList;
 
 /**
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 public class OpenWeatherResponse {
 
     public ArrayList<Weather> weather;
+
     public Main main;
 
     public String getWeatherDescription() {
@@ -19,6 +19,7 @@ public class OpenWeatherResponse {
     }
 
     public class Weather {
+
         public String description;
 
         public String getDescription() {
@@ -32,11 +33,11 @@ public class OpenWeatherResponse {
     }
 
     public class Main {
+
         float temp;
 
         public String getDisplayTemperature() {
             return String.valueOf(Math.round(temp)) + (char) 0x00B0;
         }
     }
-
 }

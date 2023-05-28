@@ -6,8 +6,10 @@ package com.morristaedt.mirror.requests;
 public class XKCDResponse {
 
     public int day;
-    public int month;
-    public int year;
-    public String img;
 
+    public int month;
+
+    public int year;
+
+    public String img;
 }

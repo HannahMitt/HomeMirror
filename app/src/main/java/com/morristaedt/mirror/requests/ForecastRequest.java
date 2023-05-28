@@ -10,6 +10,7 @@ import retrofit.http.Query;
 public interface ForecastRequest {
 
     public static final String UNITS_SI = "si";
+
     public static final String UNITS_US = "us";
 
     @GET("/forecast/{apikey}/{lat},{lon}")

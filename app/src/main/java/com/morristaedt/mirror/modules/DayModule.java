@@ -2,7 +2,6 @@ package com.morristaedt.mirror.modules;
 
 import android.text.Html;
 import android.text.Spanned;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -23,7 +22,7 @@ public class DayModule {
         if (n >= 11 && n <= 13) {
             return "th";
         }
-        switch (n % 10) {
+        switch(n % 10) {
             case 1:
                 return "st";
             case 2:

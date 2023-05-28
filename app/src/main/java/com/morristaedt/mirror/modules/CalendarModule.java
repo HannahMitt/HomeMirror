@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.util.Log;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,13 +17,17 @@ import java.util.Date;
  * Created by alex on 12/09/15.
  */
 public class CalendarModule {
+
     public interface CalendarListener {
+
         void onCalendarUpdate(String title, String details);
     }
 
     public static void getCalendarEvents(final Context context, final CalendarListener calendarListener) {
         new AsyncTask<Void, Void, Void>() {
+
             String title = null;
+
             String details = null;
 
             @Override
@@ -36,17 +39,11 @@ public class CalendarModule {
             protected Void doInBackground(Void... params) {
                 Cursor cursor;
                 ContentResolver contentResolver = context.getContentResolver();
-                final String[] colsToQuery = new String[]{
-                        CalendarContract.EventsEntity.TITLE,
-                        CalendarContract.EventsEntity.DTSTART,
-                        CalendarContract.EventsEntity.DTEND,
-                        CalendarContract.EventsEntity.EVENT_LOCATION};
-
+                final String[] colsToQuery = new String[] { CalendarContract.EventsEntity.TITLE, CalendarContract.EventsEntity.DTSTART, CalendarContract.EventsEntity.DTEND, CalendarContract.EventsEntity.EVENT_LOCATION };
                 Calendar now = Calendar.getInstance();
                 SimpleDateFormat startFormat = new SimpleDateFormat("dd/MM/yy");
                 String dateString = startFormat.format(now.getTime());
                 long start = now.getTimeInMillis();
-
                 SimpleDateFormat endFormat = new SimpleDateFormat("hh:mm:ss dd/MM/yy");
                 Calendar endOfDay = Calendar.getInstance();
                 Date endofDayDate;
@@ -56,12 +53,7 @@ public class CalendarModule {
                 } catch (ParseException e) {
                     Log.e("CalendarModule", e.toString());
                 }
-
-
-                cursor = contentResolver.query(CalendarContract.Events.CONTENT_URI, colsToQuery,
-                        "( dtstart >" + start + ") and (dtend  <" + endOfDay.getTimeInMillis() + ")",
-                        null, "dtstart ASC");
-
+                cursor = contentResolver.query(CalendarContract.Events.CONTENT_URI, colsToQuery, "( dtstart >" + start + ") and (dtend  <" + endOfDay.getTimeInMillis() + ")", null, "dtstart ASC");
                 if (cursor != null) {
                     if (cursor.getCount() > 0) {
                         cursor.moveToFirst();
@@ -76,7 +68,6 @@ public class CalendarModule {
                             details += " ~ " + cursor.getString(3);
                         }
                     }
-
                     cursor.close();
                 }
                 return null;
