@@ -9,13 +9,17 @@ import java.util.Calendar;
 public class ForecastResponse {
 
     float latitude;
+
     float longitude;
 
     public ForecastCurrently currently;
+
     public ForecastHourly hourly;
 
     public class ForecastCurrently {
+
         public String summary;
+
         public float temperature;
 
         public String getDisplayTemperature() {
@@ -24,15 +28,23 @@ public class ForecastResponse {
     }
 
     public class ForecastHourly {
+
         String summary;
+
         public ArrayList<Hour> data;
     }
 
     public class Hour {
-        public long time; // in seconds
+
+        // in seconds
+        public long time;
+
         public String summary;
+
         public String precipType;
+
         public float precipProbability;
+
         public float temperature;
 
         public Calendar getCalendar() {

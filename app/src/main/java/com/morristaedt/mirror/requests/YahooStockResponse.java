@@ -1,7 +1,6 @@
 package com.morristaedt.mirror.requests;
 
 import android.text.TextUtils;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -13,16 +12,21 @@ public class YahooStockResponse {
     private YahooQueryResponse query;
 
     private class YahooQueryResponse {
+
         public YahooResultsResponse results;
     }
 
     private class YahooResultsResponse {
+
         public YahooQuoteResponse quote;
     }
 
     public class YahooQuoteResponse {
+
         public String symbol;
+
         public String PercentChange;
+
         public float LastTradePriceOnly;
 
         public BigDecimal getPercentageChange() {
@@ -34,7 +38,6 @@ public class YahooStockResponse {
             }
         }
     }
-
 
     public YahooQuoteResponse getQuoteResponse() {
         if (query != null && query.results != null) {

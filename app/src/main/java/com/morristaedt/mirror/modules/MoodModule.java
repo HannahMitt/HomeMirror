@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 import android.util.SparseArray;
-
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 import com.morristaedt.mirror.R;
-
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
@@ -18,13 +16,17 @@ import java.lang.ref.WeakReference;
  * Created by akodiakson on 9/13/15.
  */
 public class MoodModule {
+
     private static final String TAG = "MoodModule";
+
     private WeakReference<Context> mContextWeakReference;
+
     private CameraSource mCameraSource = null;
 
     private MoodListener mCallBacks;
 
     public interface MoodListener {
+
         void onShouldGivePositiveAffirmation(String affirmation);
     }
 
@@ -50,16 +52,12 @@ public class MoodModule {
      * at long distances.
      */
     private void createCameraSource() {
-
         Context context = mContextWeakReference.get();
-        FaceDetector detector = new FaceDetector.Builder(context)
-                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
-                .build();
-
+        FaceDetector detector = new FaceDetector.Builder(context).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).build();
         detector.setProcessor(new Detector.Processor<Face>() {
+
             @Override
             public void release() {
-
             }
 
             @Override
@@ -74,7 +72,6 @@ public class MoodModule {
                 }
             }
         });
-
         if (!detector.isOperational()) {
             // Note: The first time that an app using face API is installed on a device, GMS will
             // download a native library to the device in order to do detection.  Usually this
@@ -86,14 +83,8 @@ public class MoodModule {
             // download completes on device.
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
-
         try {
-            mCameraSource = new CameraSource.Builder(context, detector)
-                    .setRequestedPreviewSize(640, 480)
-                    .setFacing(CameraSource.CAMERA_FACING_FRONT)
-                    .setRequestedFps(30.0f)
-                    .build();
-
+            mCameraSource = new CameraSource.Builder(context, detector).setRequestedPreviewSize(640, 480).setFacing(CameraSource.CAMERA_FACING_FRONT).setRequestedFps(30.0f).build();
             mCameraSource.start();
         } catch (IOException | RuntimeException e) {
             Log.e(TAG, "Something went horribly wrong, with your face.", e);
@@ -103,13 +94,10 @@ public class MoodModule {
     private String getFeedbackForSmileProbability(float isSmilingProbability) {
         final boolean isSmiling = isSmilingProbability > 0.5f;
         final boolean aFaceIsntDetected = isSmilingProbability <= 0;
-
         String feedback;
-
         if (isSmiling || aFaceIsntDetected) {
             return null;
         }
-
         final Resources resources = mContextWeakReference.get().getResources();
         if (isSmilingProbability < 0.15) {
             feedback = resources.getString(R.string.it_gets_better);
@@ -118,7 +106,6 @@ public class MoodModule {
         } else {
             feedback = resources.getString(R.string.something_special);
         }
-
         return feedback;
     }
 }

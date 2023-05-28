@@ -1,10 +1,8 @@
 package com.morristaedt.mirror;
 
 import android.app.Application;
-
 import com.crashlytics.android.Crashlytics;
 import com.morristaedt.mirror.configuration.ConfigurationSettings;
-
 import io.fabric.sdk.android.Fabric;
 
 /**

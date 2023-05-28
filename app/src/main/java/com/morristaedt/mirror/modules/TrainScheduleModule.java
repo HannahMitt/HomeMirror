@@ -19,7 +19,7 @@ public class TrainScheduleModule {
         return 0;
     }
 
-    public int earliestArrivalAfterDaySeconds (int afterDaySecs) {
+    public int earliestArrivalAfterDaySeconds(int afterDaySecs) {
         /*
         nowSchedule.find {
             time:
@@ -68,7 +68,6 @@ public class TrainScheduleModule {
         */
         return null;
     }
-
     /**
      * Weekday schedule for the F train out of
      * station F21N.
@@ -268,7 +267,6 @@ public class TrainScheduleModule {
             "26:10:30"
     ).map(stringToDaySeconds(_)).sortWith(_ < _)
     */
-
     /**
      * Saturday schedule for the F train out of
      * station F21N.
@@ -397,7 +395,6 @@ public class TrainScheduleModule {
             "26:10:30"
     ).map(stringToDaySeconds(_)).sortWith(_ < _)
     */
-
     /**
      * Sunday schedule for the F train out of
      * station F21N.
