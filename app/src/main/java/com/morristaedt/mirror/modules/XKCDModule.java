@@ -44,11 +44,9 @@ public class XKCDModule {
 
             @Override
             protected void onPostExecute(@Nullable XKCDResponse xkcdResponse) {
-                if (xkcdResponse != null && !TextUtils.isEmpty(xkcdResponse.img)) {
-                    if (ConfigurationSettings.isDemoMode() || isTodaysXKCD(xkcdResponse)) {
-                        listener.onNewXKCDToday(xkcdResponse.img);
-                        return;
-                    }
+                if (xkcdResponse != null && !TextUtils.isEmpty(xkcdResponse.img) && ConfigurationSettings.isDemoMode() || isTodaysXKCD(xkcdResponse)) {
+                    listener.onNewXKCDToday(xkcdResponse.img);
+                    return;
                 }
                 listener.onNewXKCDToday(null);
             }

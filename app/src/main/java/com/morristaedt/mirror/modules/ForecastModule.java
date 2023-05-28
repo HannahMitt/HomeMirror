@@ -75,10 +75,8 @@ public class ForecastModule {
                             if (hour.precipProbability >= 0.3) {
                                 return false;
                             }
-                        } else if (hourOfDay >= 17 && hourOfDay <= 19) {
-                            if (hour.precipProbability >= 0.3) {
-                                return false;
-                            }
+                        } else if (hourOfDay >= 17 && hourOfDay <= 19 && hour.precipProbability >= 0.3) {
+                            return false;
                         }
                     }
                 }
@@ -111,10 +109,8 @@ public class ForecastModule {
 
             @Override
             protected void onPostExecute(OpenWeatherResponse response) {
-                if (response != null) {
-                    if (response.main != null) {
-                        listener.onWeatherToday(response.main.getDisplayTemperature() + " " + response.getWeatherDescription());
-                    }
+                if (response != null && response.main != null) {
+                    listener.onWeatherToday(response.main.getDisplayTemperature() + " " + response.getWeatherDescription());
                 }
             }
         }.execute();
