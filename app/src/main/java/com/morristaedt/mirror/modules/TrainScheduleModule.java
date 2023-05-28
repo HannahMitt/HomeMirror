@@ -8,15 +8,11 @@ import java.util.List;
 public class TrainScheduleModule {
 
     public int waitingSecondsForNextArrivalWithBufferSeconds(int bufferSeconds) {
-        /*
-        earliestArrivalAfterNowWithBufferSeconds(bufferSeconds) - (nowDaySeconds + bufferSeconds);
-        */
-        return 0;
+        return earliestArrivalCalculation(bufferSeconds);
     }
 
     public int earliestArrivalAfterNowWithBufferSeconds(int bufferSeconds) {
-        // earliestArrivalAfterDaySeconds(nowDaySeconds+bufferSeconds);
-        return 0;
+        return earliestArrivalCalculation(bufferSeconds);
     }
 
     public int earliestArrivalAfterDaySeconds(int afterDaySecs) {
@@ -67,6 +63,13 @@ public class TrainScheduleModule {
         case _ => weekdaySchedule
         */
         return null;
+    }
+
+    private int earliestArrivalCalculation(int bufferSeconds) {
+        /*
+        earliestArrivalAfterNowWithBufferSeconds(bufferSeconds) - (nowDaySeconds + bufferSeconds);
+        */
+        return 0;
     }
     /**
      * Weekday schedule for the F train out of
